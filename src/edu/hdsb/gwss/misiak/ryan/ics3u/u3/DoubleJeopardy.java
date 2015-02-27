@@ -11,7 +11,7 @@ package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 public class DoubleJeopardy {
 
     public static void main(String[] args) {
-        double value = 32e309;
+        double value = 32;
         System.out.println("A double: " +  value);
     }
     
