@@ -31,6 +31,7 @@ public class Restaurant {
         double billPlusTax = totalTax + billTotal;
         System.out.println("Total Tax: " + "$" + billTotal + " x " + "0.13 " + "= " +  "$" + totalTax);
         System.out.println("Total Paid: " + "$" + billTotal + " + " + "$" + totalTax + "= " + "$" + billPlusTax);
+    
     }
     
 }
