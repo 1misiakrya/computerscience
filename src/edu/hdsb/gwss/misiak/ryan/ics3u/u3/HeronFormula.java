@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: HeronFormula
+ * Date: March 2, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Descrption: This program gives the area of a triangle using Heron's Formula, based off of the user's input.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 
