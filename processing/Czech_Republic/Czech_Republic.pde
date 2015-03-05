@@ -1,9 +1,9 @@
 /*
-*Name: Botswana
-*Date: March 3, 2015
+*Name: Czech Republic
+*Date: March 4, 2015
 *Author: Mr. R. Misiak
 *Version: v0.01
-*Description: This program creates the flag of Botswana.
+*Description: This program creates the flag of Czech Republic.
 */
 
 //Gets rid of borders.
@@ -17,15 +17,11 @@ int yBoxLocation = 20;
 
 size((int) (500*SIZE_FACTOR), (int) (400*SIZE_FACTOR));
 
-//Blue Box
-fill(8, 115, 165);
+fill(215,20,26);
 rect(xBoxLocation, yBoxLocation, BOX_WIDTH, BOX_HEIGHT);
 
-//White Box
 fill(255,255,255);
-rect(xBoxLocation, yBoxLocation + 0.35*BOX_HEIGHT, BOX_WIDTH, BOX_HEIGHT*.30);
+rect(xBoxLocation, yBoxLocation, BOX_WIDTH, BOX_HEIGHT*0.5);
 
-//Black Box
-fill(0,0,0);
-rect(xBoxLocation, yBoxLocation + 0.40*BOX_HEIGHT, BOX_WIDTH, BOX_HEIGHT*.20);
-
+fill(17,69,126);
+triangle(xBoxLocation, yBoxLocation, xBoxLocation, yBoxLocation+BOX_HEIGHT, xBoxLocation+BOX_WIDTH*0.5, yBoxLocation+BOX_HEIGHT*0.5);

@@ -6,14 +6,16 @@
 *Description: This program creates the flag of Bahamas.
 */
 
-final int BOX_HEIGHT = 300;
-final int BOX_WIDTH = 300;
+//Gets rid of borders.
+noStroke();
+
+final double SIZE_FACTOR = 1;
+final int BOX_WIDTH = (int) (400*SIZE_FACTOR);
+final int BOX_HEIGHT = (int) (300*SIZE_FACTOR);
 int xBoxLocation = 20;
 int yBoxLocation = 20;
 
-size( 400, 400 );
-
-size( 400, 400 );
+size((int) (500*SIZE_FACTOR), (int) (400*SIZE_FACTOR));
 
 //Blue Box
 fill(0,140,173);
