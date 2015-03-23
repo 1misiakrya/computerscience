@@ -21,17 +21,17 @@ public class Discount {
      */
     public static void main(String[] args) {
     
-        System.out.println("Enter amount of purchases: ");
+        System.out.println("Enter amount of purchases in cents: ");
         
         Scanner inputPurchases = new Scanner (System.in);
         
         NumberFormat money = NumberFormat.getCurrencyInstance();
         
-        double totalPurchased = inputPurchases.nextDouble();
-        double discounts = totalPurchased*0.10;
+        int totalPurchased = inputPurchases.nextInt();
+        int discounts = (totalPurchased/10);
         
         if (totalPurchased >= 10.00){
-            System.out.println( "Discounted Price: " + money.format(discounts));
+            System.out.println( "Discounted Price: " + money.format(discounts*100));
         }
         else {
             System.out.println("Your purchases were not enough to be awarded a discount.");
