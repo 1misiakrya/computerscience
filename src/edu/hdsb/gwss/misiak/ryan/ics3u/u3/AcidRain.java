@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: Discount
+ * Date: March 11, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program notifies the user if the water in the river near them is either 
+too acidic or basic for fish to live in, or just right.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

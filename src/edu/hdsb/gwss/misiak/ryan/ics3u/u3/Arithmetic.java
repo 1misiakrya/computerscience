@@ -3,7 +3,7 @@
  * Date: February 27, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: 
+ * Description: This program was created to complete simple arithmetic problems.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

@@ -3,7 +3,7 @@
  * Date: February 27, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program is designed to calculate the total tax from a 
+ * Description: This program is designed to calculate the total tax from a 
 restaurant bill, then add that tax to the bill to get the total paid.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;

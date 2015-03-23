@@ -3,7 +3,7 @@
  * Date: March 2, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: Calculates cosine law for the user when two sides and one angle are inputed.
+ * Description: Calculates cosine law for the user when two sides and one angle are inputed.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

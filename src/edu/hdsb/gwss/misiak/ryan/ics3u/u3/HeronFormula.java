@@ -3,7 +3,7 @@
  * Date: March 2, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program gives the area of a triangle using Heron's Formula, based off of the user's input.
+ * Description: This program gives the area of a triangle using Heron's Formula, based off of the user's input.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

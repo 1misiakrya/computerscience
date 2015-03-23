@@ -3,7 +3,7 @@
  * Date: February 25, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program lists the rules for the game Rock Paper Scissors.
+ * Description: This program lists the rules for the game Rock Paper Scissors.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

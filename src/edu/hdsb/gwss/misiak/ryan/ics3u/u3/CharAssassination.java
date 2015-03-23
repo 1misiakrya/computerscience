@@ -3,7 +3,7 @@
  * Date: March 2, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program tests the limits of data type "char".
+ * Description: This program tests the limits of data type "char".
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

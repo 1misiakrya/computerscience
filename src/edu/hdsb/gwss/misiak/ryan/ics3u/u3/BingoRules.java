@@ -3,7 +3,7 @@
  * Date: February 25, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program is just a simple program that gives the user a list 
+ * Description: This program is just a simple program that gives the user a list 
 of the rules to the game BINGO.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;

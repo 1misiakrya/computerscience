@@ -3,7 +3,7 @@
  * Date: March 13, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: 
+ * Description: This program verifies that the number of tools match the necessary amounts.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

@@ -3,7 +3,7 @@
  * Date: February 26, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program was designed to test the limits of a double
+ * Description: This program was designed to test the limits of a double
 (exponent value of 309).
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;

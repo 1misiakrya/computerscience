@@ -3,7 +3,7 @@
  * Date: March 11, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program shows the user the discounted price of their purchases if the purchases are greater than $10.00.
+ * Description: This program shows the user the discounted price of their purchases if the purchases are greater than $10.00.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

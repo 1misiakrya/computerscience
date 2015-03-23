@@ -3,7 +3,7 @@
  * Date: March 2, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program takes an input of days and converts it to hours.
+ * Description: This program takes an input of days and converts it to hours.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

@@ -3,7 +3,7 @@
  * Date: February 25, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program creates a Bingo card for the user to use for the 
+ * Description: This program creates a Bingo card for the user to use for the 
 game BINGO.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;

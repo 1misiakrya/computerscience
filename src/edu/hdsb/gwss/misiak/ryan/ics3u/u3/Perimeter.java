@@ -3,7 +3,7 @@
  * Date: March 2, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program gives the area and perimeter of a rectangle given the user's input.
+ * Description: This program gives the area and perimeter of a rectangle given the user's input.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

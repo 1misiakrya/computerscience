@@ -3,7 +3,7 @@
  * Date: February 26, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption:
+ * Description:
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

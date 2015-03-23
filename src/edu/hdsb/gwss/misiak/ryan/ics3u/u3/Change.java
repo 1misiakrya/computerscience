@@ -3,7 +3,7 @@
  * Date: February 27, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program gives the user the smallest amount of change needed for a certain value in cents.
+ * Description: This program gives the user the smallest amount of change needed for a certain value in cents.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 

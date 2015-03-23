@@ -3,7 +3,7 @@
  * Date: March 2, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Descrption: This program takes the values of the digits in a three digit number.
+ * Description: This program takes the values of the digits in a three digit number.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 
