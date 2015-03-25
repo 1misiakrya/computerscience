@@ -30,6 +30,7 @@ public class AcidRain {
         
         int pH = inputPH.nextInt();
         
+        // pH
         if (pH>14 || pH<0){
             System.out.println("Error - not a valid value.");
         }

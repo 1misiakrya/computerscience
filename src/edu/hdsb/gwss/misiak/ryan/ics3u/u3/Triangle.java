@@ -40,15 +40,20 @@ public class Triangle {
         double sideA = inputSideA.nextDouble();
         double sideB = inputSideB.nextDouble();
         double sideC = inputSideC.nextDouble();
-        
+        double tmp = 0;
+
         // SWAP
-        if( sideA > sideB ) {
+        if (sideA > sideB) {
+            tmp = sideB;
             sideB = sideA;
+            sideA = tmp;
         }
-        
+
         //
-        if( sideB > sideC ) {
-           
+        if (sideB > sideC) {
+            tmp = sideC;
+            sideC = sideB;
+            sideB = tmp;
         }
 
         if ((sideA < 0) || (sideB < 0) || (sideC < 0)) {
@@ -59,6 +64,6 @@ public class Triangle {
         } else {
             System.out.println("These sides cannot make a triangle.");
         }
-        
+
     }
 }
