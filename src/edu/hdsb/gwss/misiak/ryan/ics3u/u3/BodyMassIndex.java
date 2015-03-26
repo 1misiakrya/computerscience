@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: BodyMassIndex
+ * Date: March 25, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program calculates the user's body mass index in metric and imperial systems after the user gives it their height & weight.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
 
@@ -17,30 +19,56 @@ public class BodyMassIndex {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    
-        System.out.println("Please enter your weight in kg");
+
+        // User inputs their weight.
+        System.out.println("Body Mass Index Calculator. Enter 1 for Metric, and 2 for Imperial.");
         
-        Scanner inputWeightKg = new Scanner (System.in);
+        Scanner inputChoice = new Scanner (System.in);
+        int Choice = inputChoice.nextInt();
+        double bmi = 0;
         
-        System.out.println("Please enter your weight in lbs");
-        
-        Scanner inputWeightLbs = new Scanner (System.in);
-        
+        System.out.println("Please enter your weight");
+
+        Scanner inputWeight = new Scanner(System.in);
+        double Weight = inputWeight.nextDouble();
+
+        // User inputs their height.
         System.out.println("Please enter your height");
+
+        Scanner inputHeightMetres = new Scanner(System.in);
+        double Height = inputHeightMetres.nextDouble();
+
+        // Calculations for body mass index.
+        double bmiMetric = (Weight / (Height * Height));
+        double bmiImperial = (Weight * 703 / (Height * Height));
         
-        Scanner inputHeight = new Scanner (System.in);
+        if (Choice == 1){
+            bmi = bmiMetric;
+        }
+        else{
+            bmi = bmiImperial;
+        }
         
+        // Telling the user what their metric body mass index means.
+        System.out.println("Your body mass index shows you are:");
         
-        
-        double metricWeight = inputWeightKg.nextDouble();
-        double imperialWeight = inputWeightLbs.nextDouble();
-        double height = inputHeight.nextDouble();
-        double bmiMetric = (metricWeight / (height * height));
-        double bmiImperial = (imperialWeight * 703 / (height*height));
-        
-        
-        
-        
+        if (bmiMetric < 0) {
+            System.out.println("Sorry. Invalid number. Please try again.\n");
+        } else if (bmiMetric < 16) {
+            System.out.println("Starvation");
+        } else if (bmiMetric < 19.5) {
+            System.out.println("Underweight\n");
+        } else if (bmiMetric <= 25) {
+            System.out.println("Ideal\n");
+        } else if (bmiMetric < 30) {
+            System.out.println("Overweight\n");
+        } else if (bmiMetric < 40) {
+            System.out.println("Obese\n");
+        } else {
+            System.out.println("Morbidly Obese\n");
+        }
+
+       
     }
-    
+
 }

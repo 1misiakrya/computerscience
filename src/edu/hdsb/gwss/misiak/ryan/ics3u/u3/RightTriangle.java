@@ -20,26 +20,29 @@ public class RightTriangle {
      */
     public static void main(String[] args) {
     
+        // Information about triangles
         System.out.println("Three numbers represent the sides of a triangle when"
                 + " the sum of any two sides is greater than the third side.  "
                 + "This program has the user enter three lengths of sides and "
                 + "determines whether the figure is a triangle or not.");
 
+        // User inputs lengths of sides 1, 2, & 3.
         System.out.println("Enter Length of Side 1: ");
 
         Scanner inputSideA = new Scanner(System.in);
-
+        double sideA = inputSideA.nextDouble();
+        
         System.out.println("Enter Length of Side 2: ");
 
         Scanner inputSideB = new Scanner(System.in);
-
+        double sideB = inputSideB.nextDouble();
+        
         System.out.println("Enter Length of Side 3: ");
 
         Scanner inputSideC = new Scanner(System.in);
-
-        double sideA = inputSideA.nextDouble();
-        double sideB = inputSideB.nextDouble();
         double sideC = inputSideC.nextDouble();
+        
+        // Creating the temporary memory slot for triangle sides.
         double tmp = 0;
         boolean triangle = false;
 
@@ -50,7 +53,7 @@ public class RightTriangle {
             sideA = tmp;
         }
 
-        //
+        // SWAP #2
         if (sideB > sideC) {
             tmp = sideC;
             sideC = sideB;
