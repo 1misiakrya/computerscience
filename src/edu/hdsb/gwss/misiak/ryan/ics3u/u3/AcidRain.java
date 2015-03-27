@@ -1,6 +1,6 @@
 /*
- * Name: Discount
- * Date: March 11, 2015
+ * Name: AcidRain
+ * Date: March 23, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
  * Description: This program notifies the user if the water in the river near them is either 
