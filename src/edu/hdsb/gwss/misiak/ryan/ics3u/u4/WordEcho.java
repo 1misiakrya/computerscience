@@ -5,7 +5,7 @@
  * Author: Mr. R. Misiak
  * Description: This program asks the user for a word, and repeats that word as many times as there are letters in the word.
  */
-package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
+package edu.hdsb.gwss.misiak.ryan.ics3u.u4;
 
 import java.util.Scanner;
 

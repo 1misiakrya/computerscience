@@ -25,16 +25,12 @@ public class OunceGrams {
         System.out.println("This program will print out a titled table that can be used to convert ounces to grams,\n" +
 "for values from 1 to 15. (1 ounce = 28.35 grams).");
         
-        System.out.format("0%s", "10%s", "Ounces", "Grams");
+        System.out.format("%6s %10s\n", "Ounces", "Grams");
         
-        int ounces = 1;
-        double grams = (ounces*28.35);
+        final double GRAMS_IN_OUNCE = 28.35;
         
-        
-        while (ounces<15){
-            
-            System.out.println("");
-            ounces = ounces+1;
+        for (int ounces=1; ounces<=15; ounces+=1){
+            System.out.format("%6s %10.2f\n",ounces ,(ounces*GRAMS_IN_OUNCE) );
         }
         
     }

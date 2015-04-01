@@ -5,7 +5,7 @@
  * Author: Mr. R. Misiak
  * Description: This program asks the user for a starting value and an ending value, and then writes all the integers (inclusive) between those two values.
  */
-package edu.hdsb.gwss.misiak.ryan.ics3u.u3;
+package edu.hdsb.gwss.misiak.ryan.ics3u.u4;
 
 import java.util.Scanner;
 
