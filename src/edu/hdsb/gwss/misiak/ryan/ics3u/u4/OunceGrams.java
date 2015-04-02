@@ -19,7 +19,7 @@ public class OunceGrams {
      */
     public static void main(String[] args) {
         
-        //Explanations
+        //Title & explanation of program for user
         System.out.println("Ounce to Grams Conversion Chart");
         
         System.out.println("This program will print out a titled table that can be used to convert ounces to grams,\n" +

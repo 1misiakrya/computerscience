@@ -22,9 +22,9 @@ public class CompoundInvesting {
      */
     public static void main(String[] args) {
 
-        //Explanations
+        //Title & explanation of program for user
         System.out.println("Compound Investing");
-        System.out.println("This program will print out a title table that will display"
+        System.out.println("This program will print out a title table that will display\n"
                 + "the amount of a yearly investment over a period of up to 15 years.");
 
         //Getting the user's input
