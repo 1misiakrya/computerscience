@@ -25,13 +25,13 @@ public class FibonacciSeries {
 
         int a = 1;
         int b = 1;
-        int c;
+        int c = 0;
 
-        System.out.print(b + " " + a + " ");
-        for (int count = 0; count < 18; count += 1) {
-            c = a + b;
+        
+        for (int count = 0; count < 20; count += 1) {
             a = b;
             b = c;
+            c = a + b;
             System.out.print(c + " ");
         }
 

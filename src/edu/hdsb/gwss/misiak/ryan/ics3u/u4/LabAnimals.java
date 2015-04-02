@@ -8,6 +8,8 @@
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u4;
 
+import java.util.Scanner;
+
 /**
  *
  * @author RMisiak
@@ -27,6 +29,11 @@ public class LabAnimals {
                 + "support Z more animals. During any hour, the animals will eat enough food for \n"
                 + "only themselves. Use a loop to determine when the population will outgrow the \n"
                 + "food supply.");
+        
+        System.out.println("Enter the Initial Population: (X) ");
+        
+        Scanner inputInitialPopulation = new Scanner (System.in);
+        
 
     }
 

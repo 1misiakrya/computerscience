@@ -28,14 +28,16 @@ public class CloserToTwo {
         //Making count and totalIncrease variables
         double totalIncrease;
         int count = 0;
-
+        int doubleCount = 1;
+        
         //Initial output
-        System.out.println("0 + 1.0 = 1.0");
+        System.out.println("0 + 1/1 = 1.0");
 
         //OUTPUT
         for (double startValue = 1; startValue < 2; startValue += (Math.pow(2, 1 * count))) {
             totalIncrease = Math.pow(2, 1 * (count - 1));
-            System.out.println(startValue + " + " + totalIncrease + " = " + (startValue + totalIncrease));
+            doubleCount = doubleCount*2;
+            System.out.println(startValue + " + " + "1/" + doubleCount + " = " + (startValue + totalIncrease));
             count = count - 1;
         }
 
