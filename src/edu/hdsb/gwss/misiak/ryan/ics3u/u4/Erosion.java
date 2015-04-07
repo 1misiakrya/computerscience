@@ -29,10 +29,12 @@ public class Erosion {
         
         double depth = 30;
         int totalYears = 0;
+        final double PERCENT_LOSS = 0.99;
         
-        for(int years=0; depth>=9; years+=1){
-            depth = depth*(Math.pow(0.99, years));
+        for(int years=1; depth>=9; years+=1){
+            depth = depth*PERCENT_LOSS;
             totalYears = years;
+            depth = depth+0.005;
         }
         System.out.println("It will take " + totalYears + " years for the soil to erode to a depth such that crops \n"
                 + "will not grow.");

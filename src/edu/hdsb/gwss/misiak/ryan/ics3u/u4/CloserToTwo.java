@@ -28,7 +28,7 @@ public class CloserToTwo {
         //Making count and totalIncrease variables
         double totalIncrease;
         int count = 0;
-        int doubleCount = 1;
+        long doubleCount = 1;
         
         //Initial output
         System.out.println("0 + 1/1 = 1.0");
