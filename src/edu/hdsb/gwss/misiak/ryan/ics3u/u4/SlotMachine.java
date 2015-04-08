@@ -20,40 +20,59 @@ public class SlotMachine {
 
         int startingCoins = 50;
         int endingCoins;
-        int currentCoins;
+        int currentCoins = startingCoins;
+        int gameCount = 1;
         Boolean continueGame = true;
 
         final int numOfValues = 4;
+        if (continueGame = true) {
+            for (int count = 0; count == count; count += 1) {
 
-        for (int count = 0; count == count; count += 1) {
-            if (continueGame) {
-                System.out.print("To play again, click 1. To end the game, click 0: ");
+                System.out.println("Game " + gameCount);
+                System.out.print("\nTo play again, click 1. To end the game, click 0: ");
 
                 Scanner inputChoice = new Scanner(System.in);
                 int Choice = inputChoice.nextInt();
 
                 if (Choice == 1) {
-                    currentCoins = startingCoins - 1;
+
+                    currentCoins = currentCoins - 1;
                     int numberOne = (int) (Math.random() * numOfValues + 1);
                     int numberTwo = (int) (Math.random() * numOfValues + 1);
                     int numberThree = (int) (Math.random() * numOfValues + 1);
-                    if ((numberOne == 1) && (numberTwo == 1) && (numberThree == 1)) {
-                        currentCoins = currentCoins + 4;
-                        System.out.println("You won: " + currentCoins);
-                    }else if((numberOne == 2) && (numberTwo == 2) && (numberThree == 2)){
-                        currentCoins = currentCoins + 6;
-                        System.out.println("You won: " + currentCoins);
-                    }else if ((numberOne == 3) && (numberTwo == 3) && (numberThree == 3)){
-                        currentCoins = currentCoins + 8;
-                        System.out.println("You won: " + currentCoins);
-                    }else if((numberOne == 4) && (numberTwo == 4) && (numberThree == 4)){
-                        currentCoins = currentCoins + 10;
-                        System.out.println("You won: " + currentCoins);
-                    }else{
-                        System.out.println("Sorry, you did not win anything :(");
-                    }   
+                    int addedCoins;
+
                     System.out.format("%2s %3s %2s %3s %2s \n", numberOne, " ", numberTwo, " ", numberThree);
                     continueGame = true;
+                    if ((numberOne == 1) && (numberTwo == 1) && (numberThree == 1)) {
+                        gameCount = gameCount + 1;
+                        addedCoins = 4;
+                        currentCoins = currentCoins + addedCoins;
+                        System.out.println("\nYou won: " + addedCoins + " coins");
+                        System.out.println("You now have " + (currentCoins + addedCoins) + " coins. \n");
+                    } else if ((numberOne == 2) && (numberTwo == 2) && (numberThree == 2)) {
+                        gameCount = gameCount + 1;
+                        addedCoins = 6;
+                        currentCoins = currentCoins + addedCoins;
+                        System.out.println("\nYou won: " + addedCoins + " coins");
+                        System.out.println("You now have " + (currentCoins + addedCoins) + " coins. \n");
+                    } else if ((numberOne == 3) && (numberTwo == 3) && (numberThree == 3)) {
+                        gameCount = gameCount + 1;
+                        addedCoins = 8;
+                        currentCoins = currentCoins + addedCoins;
+                        System.out.println("\nYou won: " + addedCoins + " coins");
+                        System.out.println("You now have " + (currentCoins + addedCoins) + " coins. \n");
+                    } else if ((numberOne == 4) && (numberTwo == 4) && (numberThree == 4)) {
+                        gameCount = gameCount + 1;
+                        addedCoins = 10;
+                        currentCoins = currentCoins + addedCoins;
+                        System.out.println("\nYou won: " + addedCoins + " coins");
+                        System.out.println("You now have " + (currentCoins + addedCoins) + " coins. \n");
+                    } else {
+                        gameCount = gameCount + 1;
+                        System.out.println("\nSorry, you did not win anything :(");
+                        System.out.println("You now have " + currentCoins + " coins. \n");
+                    }
                 } else if (Choice == 0) {
                     continueGame = false;
                     endingCoins = startingCoins;
@@ -62,9 +81,9 @@ public class SlotMachine {
                 } else {
                     System.out.println("Invalid entry. Please try again.");
                 }
-            } else {
-                System.out.println("Game has been ended.");
             }
+        } else {
+            System.out.println("Game has been ended.");
         }
     }
 }

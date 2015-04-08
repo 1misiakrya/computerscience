@@ -21,7 +21,7 @@ public class LabAnimals {
      */
     public static void main(String[] args) {
 
-//Title & explanation of the program for user
+        //Title & explanation of the program for user
         System.out.println("Lab Animals");
 
         System.out.println("At present there are X animals in a lab and enough food for Y animals. At \n"
