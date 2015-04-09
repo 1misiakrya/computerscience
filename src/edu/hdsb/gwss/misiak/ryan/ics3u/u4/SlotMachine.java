@@ -26,7 +26,7 @@ public class SlotMachine {
 
         final int numOfValues = 4;
         if (continueGame = true) {
-            for (int count = 0; count == count; count += 1) {
+            while (continueGame = true) {
 
                 System.out.println("Game " + gameCount);
                 System.out.print("\nTo play again, click 1. To end the game, click 0: ");
@@ -74,16 +74,16 @@ public class SlotMachine {
                         System.out.println("You now have " + currentCoins + " coins. \n");
                     }
                 } else if (Choice == 0) {
-                    continueGame = false;
-                    endingCoins = startingCoins;
-                    System.out.println("Thank you for playing! See you soon!");
+                    endingCoins = currentCoins;
+                    System.out.println("Thank you for playing!");
                     System.out.println("Total coins left: " + endingCoins);
+                    System.out.println("Game has been ended.");
+                    continueGame = false;
                 } else {
                     System.out.println("Invalid entry. Please try again.");
+                    continueGame = false;
                 }
             }
-        } else {
-            System.out.println("Game has been ended.");
         }
     }
 }
