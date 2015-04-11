@@ -1,5 +1,5 @@
 /*
- * Name: FibonacciSeries
+ * Name: LabAnimals
  * Date: April 1, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
@@ -30,6 +30,7 @@ public class LabAnimals {
                 + "only themselves. Use a loop to determine when the population will outgrow the \n"
                 + "food supply.");
 
+        //Getting user's input on the initial population, food supply, and added food each hour.
         System.out.format("%30s %7s %2s", "Enter the Initial Population (X) ", " ", ":\n");
 
         Scanner inputInitialPopulation = new Scanner(System.in);
@@ -45,6 +46,7 @@ public class LabAnimals {
         Scanner inputAddedFood = new Scanner(System.in);
         int addedFood = inputAddedFood.nextInt();
 
+        //OUTPUT
         System.out.format("%6s %12s %12s %12s %12s", "Hour | ", "Animals at Start | ", "Food at Start | ", "Food at End | ", "Animals at End | \n");
         int endingFoodSupply = 10;
         int hour = 0;
@@ -56,8 +58,6 @@ public class LabAnimals {
             System.out.format("%2s %15s %15s %15s %15s\n", hour, initialPopulation, initialFoodSupply, endingFoodSupply, endingPopulation);
             initialFoodSupply = endingFoodSupply;
             initialPopulation = endingPopulation;
-
         }
-
     }
 }

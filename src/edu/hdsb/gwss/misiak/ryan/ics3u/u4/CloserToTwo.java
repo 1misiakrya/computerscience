@@ -4,7 +4,8 @@
  * Version: v0.1
  * Author: Mr. R. Misiak
  * Description: This program demonstrates that the result of adding the numbers 1, 1/2, 1/4, 1/16 ...
- and so on gets closer to 2 without ever becoming 2.
+ and so on gets closer to 2 without ever becoming 2 (Although it ends up getting to two since there are
+only so many digits it can remember).
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u4;
 
@@ -29,14 +30,13 @@ public class CloserToTwo {
         double totalIncrease;
         int count = 0;
         long doubleCount = 1;
-        
-        //Initial output
-        System.out.println("0 + 1/1 = 1.0");
 
         //OUTPUT
+        System.out.println("0 + 1/1 = 1.0");
+
         for (double startValue = 1; startValue < 2; startValue += (Math.pow(2, 1 * count))) {
             totalIncrease = Math.pow(2, 1 * (count - 1));
-            doubleCount = doubleCount*2;
+            doubleCount = doubleCount * 2;
             System.out.println(startValue + " + " + "1/" + doubleCount + " = " + (startValue + totalIncrease));
             count = count - 1;
         }

@@ -62,7 +62,5 @@ public class CompoundInvesting {
                 accountTotal = yearlyInvestment + finalTotal;
             }
         }
-
     }
-
 }
