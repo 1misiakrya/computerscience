@@ -1,6 +1,6 @@
 /*
  * Name: SlotMachine
- * Date: April 5, 2015
+ * Date: April 7, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
  * Description: This program is a basic form of a casino slot machine game. User starts 
