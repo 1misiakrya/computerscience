@@ -29,7 +29,7 @@ public class SlotMachine {
                 + "combination will result in no coins being won.");
 
         //Declaring variables.
-        int startingCoins = 10;
+        int startingCoins = 50;
         int endingCoins;
         int currentCoins = startingCoins;
         int choice;
