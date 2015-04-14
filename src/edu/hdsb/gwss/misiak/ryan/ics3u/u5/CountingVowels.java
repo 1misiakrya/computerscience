@@ -31,10 +31,16 @@ public class CountingVowels {
         enteredWord = enteredWord.toUpperCase();
 
         int totalLetters = enteredWord.length();
+        int totalVowels = 0;
+        int unicodeValue;
 
         for (int i = 0; i < totalLetters; i++) {
-            
+            unicodeValue = enteredWord.codePointAt(i);
+            if ((unicodeValue == 65) || (unicodeValue == 69) || (unicodeValue == 73) || (unicodeValue == 79) || (unicodeValue == 85)) {
+                totalVowels = totalVowels + 1;
+            }
         }
+        System.out.println("There are " + totalVowels + " vowels in the sentence.");
     }
 
 }
