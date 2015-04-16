@@ -16,7 +16,7 @@ public void setup() {
   smooth();
   noStroke();
   background(100, 100, 100);
-  frameRate(10);
+  frameRate(4);
 }
 
 public void drawPacmanFacingRightOpen() {
