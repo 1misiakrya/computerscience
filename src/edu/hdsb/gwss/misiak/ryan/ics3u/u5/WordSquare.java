@@ -3,7 +3,7 @@
  * Date: April 14, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Description: This program 
+ * Description: This program takes the user's input and converts it to a word square.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u5;
 
