@@ -29,6 +29,12 @@ public class WordSquare {
         String enteredWord = inputString.nextLine();
 
         enteredWord = enteredWord.toUpperCase();
+        
+        for (int i = 1; i<enteredWord.length(); i++){
+            int x = enteredWord.charAt(i);
+            System.out.println(enteredWord);
+            
+        }
 
     }
 
