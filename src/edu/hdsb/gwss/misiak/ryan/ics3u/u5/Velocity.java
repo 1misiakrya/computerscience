@@ -15,12 +15,14 @@ import java.util.Scanner;
  */
 public class Velocity {
 
+    //Declaring global variables
     public static double distance;
 
     public static double time;
 
     public static void main(String[] args) {
 
+        //Running other methods
         gettingInput();
 
         calculatingVelocity();
@@ -29,6 +31,7 @@ public class Velocity {
 
     public static void gettingInput() {
         
+        //Getting user's input
         System.out.println("Enter a distance: ");
 
         Scanner inputDistance = new Scanner(System.in);
@@ -43,6 +46,7 @@ public class Velocity {
 
     public static void calculatingVelocity() {
 
+        //OUTPUT
         double velocity = distance / time;
 
         System.out.println("Velocity: " + velocity + "m/s");

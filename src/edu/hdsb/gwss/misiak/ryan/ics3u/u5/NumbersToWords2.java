@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: NumbersToWords
+ * Date: April 17, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program converts three digit numbers given by the user into the english word that goes with them.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u5;
 
@@ -13,6 +15,7 @@ import java.util.Scanner;
  */
 public class NumbersToWords2 {
 
+    //Declaring global variables
     public static String numberString;
     public static int hundreds;
     public static int tens;
@@ -22,14 +25,18 @@ public class NumbersToWords2 {
 
     public static void main(String[] args) {
 
+        //Getting user's input
         System.out.println("Enter a three-digit number (use 0 as a place holder): ");
 
         Scanner inputNumber = new Scanner(System.in);
         numberString = inputNumber.nextLine();
 
+        //Checking that user's input works in the program
         if (number > 999 || number < 0 || (numberString.length()) < 3 || (numberString.length() > 3)) {
             System.out.println("Invalid entry.");
         } else {
+            
+            //Running the other methods
             hundreds();
 
             tens();
@@ -42,9 +49,11 @@ public class NumbersToWords2 {
 
     public static void hundreds() {
 
+        //Finding the digit in the hundreds column
         number = Integer.parseInt(numberString);
         hundreds = (int) number / 100;
 
+        //OUTPUT for hundreds column
         if (hundreds == 1) {
             System.out.print("ONE HUNDRED ");
         } else if (hundreds == 2) {
@@ -68,8 +77,10 @@ public class NumbersToWords2 {
 
     public static void tens() {
 
+        //Finding the digit in the tens column
         tens = (int) (number / 10) % 10;
 
+        //OUTPUT for tens column
         if (20 < number) {
             if (tens == 2) {
                 System.out.print("TWENTY ");
@@ -95,9 +106,11 @@ public class NumbersToWords2 {
 
     public static void ones() {
 
+        //Finding the digit in the ones column
         int checkingHundreds = (int) number/100;
         ones = (int) number % 10;
 
+        //OUTPUT for ones column
         if (number-(checkingHundreds*100) < 10 || (number-checkingHundreds*100) > 19) {
             if (ones == 1) {
                 System.out.print("ONE");
@@ -123,9 +136,11 @@ public class NumbersToWords2 {
 
     public static void teens() {
 
+        //Checking to see if the user's number is in the teens
         int hundredsDigit = (int )number/100;
         teens = (int) number-(hundredsDigit*100);
         
+        //OUTPUT for if the digits are in the teens
         if (teens > 9 && teens < 20) {
             if (teens == 10) {
                 System.out.println("TEN");

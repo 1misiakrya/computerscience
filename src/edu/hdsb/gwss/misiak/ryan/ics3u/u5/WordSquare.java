@@ -20,19 +20,23 @@ public class WordSquare {
      */
     public static void main(String[] args) {
         
+        //Introduction to program
         System.out.println("Word Square \nThis program prints a square out of the letters of a word entered by the user.");
         
         System.out.println("Enter Word: ");
         
+        //Getting user's input
         Scanner inputString = new Scanner(System.in);
         
         String enteredWord = inputString.nextLine();
         
         enteredWord = enteredWord.toUpperCase();
         
+        //Declaring variables
         int i = 0;
         int length = enteredWord.length();
         
+        //OUTPUT
         while (i < length) {
             System.out.println(enteredWord.substring(i, length) + enteredWord.substring(0, i));
             i++;

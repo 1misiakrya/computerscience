@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: Compass
+ * Date: April 20, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program gets the user's inputted direction and converts it to a sentence with the
+directions.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u5;
 
@@ -13,11 +16,20 @@ import java.util.Scanner;
  */
 public class Compass {
 
-    /**
-     * @param args the command line arguments
-     */
+    //Delcaring global variables
+    public static char startingDirectionLetter;
+    public static char endingDirectionLetter;
+
+    public static int lengthOfInput;
+
+    public static String startingDirectionWord;
+    public static String givenAngle;
+    public static String endingDirectionWord;
+    public static String userInput;
+
     public static void main(String[] args) {
 
+        //Introduction to program
         System.out.println("Compass Directions");
 
         System.out.println("Compass directions are written in the following form: S45W. This "
@@ -25,43 +37,91 @@ public class Compass {
                 + "45 \ndegrees towards the WEST. This program has the user enter a compass direction \n"
                 + "and then prints a message.");
 
+        //Getting user's input
         System.out.println("Enter Direction: ");
 
         Scanner inputDirection = new Scanner(System.in);
 
-        String userInput = inputDirection.nextLine();
+        userInput = inputDirection.nextLine();
         userInput = userInput.toUpperCase();
 
-        int lengthOfInput = userInput.length();
-        String direction;
+        //Running methods
+        startingDirection();
+        angle();
+        endingDirection();
 
-        String givenDirection;
-
-        for (int i = 0; i < lengthOfInput; i++) {
-            if (userInput.substring(0, 1).equals 'S'){
-                direction = "SOUTH";
-            }else if(userInput.substring(0, 1) == "N"){
-                direction = "NORTH";
-            }else if(userInput.substring(0, 1) == "E"){
-                direction = "EAST";
-            }else if(userInput.substring(0, 1) == "W"){
-                direction = "WEST";
-            }else {
-                System.out.println("Error");
-            }
-            
-            if (lengthOfInput < 2 || lengthOfInput > 5) {
-                System.out.println("Error. Invalid Entry.");
-            } else if (lengthOfInput == 3) {
-                givenDirection = userInput.substring(1, 1);
-            } else if (lengthOfInput == 4) {
-                givenDirection = userInput.substring(1, 2);
-            } else {
-                givenDirection = userInput.substring(1, 3);
-            }
-        }
-        System.out.println("Start facing" + direction);
+        //FINAL OUTPUT
+        System.out.println("Start facing " + startingDirectionWord + " Turn " + givenAngle + " degrees towards the " + endingDirectionWord);
 
     }
 
+    public static void startingDirection() {
+
+        //Finding startDirection
+        startingDirectionLetter = userInput.charAt(0);
+        
+        //Converting startDirectionLetter into a word
+        if (startingDirectionLetter == 'N') {
+            System.out.println("NORTH");
+            startingDirectionWord = "NORTH";
+        } else if (startingDirectionLetter == 'S') {
+            System.out.println("SOUTH");
+            startingDirectionWord = "SOUTH";
+        } else if (startingDirectionLetter == 'W') {
+            System.out.println("WEST");
+            startingDirectionWord = "WEST";
+        } else if (startingDirectionLetter == 'E') {
+            System.out.println("EAST");
+            startingDirectionWord = "EAST";
+        } else {
+            System.out.println("Error");
+            startingDirectionWord = " ";
+        }
+
+    }
+
+    public static void angle() {
+
+        //Getting the angle
+        lengthOfInput = userInput.length();
+
+        //OUTPUT to find the angle, and finding endingDirectionLetter as well
+        if (lengthOfInput < 2 || lengthOfInput > 5) {
+            System.out.println("Error. Invalid Entry.");
+            givenAngle = " ";
+            endingDirectionLetter = userInput.charAt(6);
+        } else if (lengthOfInput == 3) {
+            givenAngle = userInput.substring(1, 2);
+            endingDirectionLetter = userInput.charAt(2);
+        } else if (lengthOfInput == 4) {
+            givenAngle = userInput.substring(1, 3);
+            endingDirectionLetter = userInput.charAt(3);
+        } else {
+            givenAngle = userInput.substring(1, 4);
+            endingDirectionLetter = userInput.charAt(4);
+        }
+
+    }
+
+    public static void endingDirection() {
+
+        //OUTPUT to spell out endingDirection
+        if (endingDirectionLetter == 'N') {
+            System.out.println("NORTH");
+            endingDirectionWord = "NORTH";
+        } else if (endingDirectionLetter == 'S') {
+            System.out.println("SOUTH");
+            endingDirectionWord = "SOUTH";
+        } else if (endingDirectionLetter == 'W') {
+            System.out.println("WEST");
+            endingDirectionWord = "WEST";
+        } else if (endingDirectionLetter == 'E') {
+            System.out.println("EAST");
+            endingDirectionWord = "EAST";
+        } else {
+            System.out.println("Error");
+            endingDirectionWord = " ";
+        }
+
+    }
 }
