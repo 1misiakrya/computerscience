@@ -67,7 +67,9 @@ public class SINCheck {
     }
 
     public static void grandTotal() {
-
+        
+        
+        
     }
 
     public static void subtraction() {
