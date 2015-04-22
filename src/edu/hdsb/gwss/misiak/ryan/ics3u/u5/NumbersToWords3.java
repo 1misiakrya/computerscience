@@ -77,25 +77,33 @@ public class NumbersToWords3 {
 
         //Finding the digit in the tens column
         //OUTPUT for tens column
-        if (20 < number) {
-            if (tens == 2) {
-                message = "TWENTY ";
-            } else if (tens == 3) {
-                message = "THIRTY ";
-            } else if (tens == 4) {
-                message = "FORTY ";
-            } else if (tens == 5) {
-                message = "FIFTY ";
-            } else if (tens == 6) {
-                message = "SIXTY ";
-            } else if (tens == 7) {
-                message = "SEVENTY ";
-            } else if (tens == 8) {
-                message = "EIGHTY ";
-            } else if (tens == 9) {
-                message = "NINETY ";
-            }
-
+        switch (tens) {
+            case 1:
+                System.out.println(message);
+                break;
+            case 2:
+                System.out.println(message);
+                break;
+            case 3:
+                System.out.println(message);
+            case 4:
+                System.out.println(message);
+                break;
+            case 5:
+                System.out.println(message);
+                break;
+            case 6:
+                System.out.println(message);
+                break;
+            case 7:
+                System.out.println(message);
+                break;
+            case 8:
+                System.out.println(message);
+                break;
+            case 9:
+                System.out.println(message);
+                break;
         }
 
     }

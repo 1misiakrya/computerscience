@@ -54,6 +54,7 @@ public class NumbersToWords2 {
         hundreds = (int) number / 100;
 
         //OUTPUT for hundreds column
+        
         if (hundreds == 1) {
             System.out.print("ONE HUNDRED ");
         } else if (hundreds == 2) {

@@ -15,11 +15,6 @@ import java.util.Scanner;
  */
 public class SINCheck {
 
-    //Declaring global variables
-    public static String socialInsuranceNumber;
-    public static int totalEvenAddition = 0;
-    public static int totalOddAddition = 0;
-
     public static void main(String[] args) {
 
         //Introduction to the program for the user.
@@ -34,45 +29,36 @@ public class SINCheck {
 
         Scanner inputSIN = new Scanner(System.in);
 
-        socialInsuranceNumber = inputSIN.nextLine();
+        String socialInsuranceNumber = inputSIN.nextLine();
+        int totalDigitTestEven = 0;
+        int sumOfEvenNumbers = 0;
+        int totalDigitTestOdd = 0;
+        int totalSum = 0;
+        boolean correctSIN = false;
 
-        evenDigitMultiplier();
-        oddDigitAddition();
-        System.out.println(totalEvenAddition);
-        System.out.println(totalOddAddition);
-    }
-
-    public static void evenDigitMultiplier() {
-
-        //Multiplying all numbers found in even numbered columns by 2
-        int a;
-
-        for (int i = 1; i < socialInsuranceNumber.length(); i += 2) {
-            a = socialInsuranceNumber.charAt(i) * 2;
-            totalEvenAddition = totalEvenAddition + a;
+        if (socialInsuranceNumber.length() != 9) {
+            System.out.println("Error. Incorrect amount of digits entered.");
+        } else {
+            for (int i = 0; i < 8; i++) {
+                if ((i % 2) == 1) {
+                    totalDigitTestEven = totalDigitTestEven + (Integer.parseInt("" + socialInsuranceNumber.charAt(i)) * 2);
+                    if (Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) > 10) {
+                        sumOfEvenNumbers = sumOfEvenNumbers + 10 + (10 - Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2));
+                    }
+                } else if ((i % 2) == 0) {
+                    totalDigitTestOdd = totalDigitTestOdd + (Integer.parseInt("" + socialInsuranceNumber.charAt(i)));
+                }
+            }
+            totalSum = sumOfEvenNumbers + totalDigitTestOdd;
+            if ((Integer.parseInt("" + socialInsuranceNumber.charAt(8)) == totalSum - (Integer.parseInt("" + socialInsuranceNumber.charAt(8) * 10)))) {
+                correctSIN = true;
+            }
+        }   
+        if (correctSIN) {
+            System.out.println("The Check Digit of the SIN is correct.");
+        } else {
+            System.out.println("The Check Digit of the SIN is incorrect.");
         }
-
-    }
-
-    public static void oddDigitAddition() {
-
-        //Adding up the odd numbers
-        int b;
-
-        for (int i = 0; i < socialInsuranceNumber.length(); i += 2) {
-            b = socialInsuranceNumber.charAt(i);
-            totalOddAddition = totalOddAddition + b;
-        }
-
-    }
-
-    public static void grandTotal() {
-        
-        
-        
-    }
-
-    public static void subtraction() {
 
     }
 
