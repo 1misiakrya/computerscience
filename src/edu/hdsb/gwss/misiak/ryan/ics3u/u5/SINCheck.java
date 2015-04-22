@@ -33,7 +33,7 @@ public class SINCheck {
         int totalDigitTestEven = 0;
         int sumOfEvenNumbers = 0;
         int totalDigitTestOdd = 0;
-        int totalSum = 0;
+        int totalSum;
         boolean correctSIN = false;
 
         if (socialInsuranceNumber.length() != 9) {
