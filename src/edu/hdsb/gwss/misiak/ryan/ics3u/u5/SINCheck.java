@@ -33,7 +33,7 @@ public class SINCheck {
         int totalDigitTestEven = 0;
         int sumOfEvenNumbers = 0;
         int totalDigitTestOdd = 0;
-        int totalSum;
+        double totalSum;
         boolean correctSIN = false;
 
         if (socialInsuranceNumber.length() != 9) {
@@ -42,24 +42,32 @@ public class SINCheck {
             for (int i = 0; i < 8; i++) {
                 if ((i % 2) == 1) {
                     totalDigitTestEven = totalDigitTestEven + (Integer.parseInt("" + socialInsuranceNumber.charAt(i)) * 2);
+                    System.out.println(totalDigitTestEven);
                     if (Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) > 10) {
-                        sumOfEvenNumbers = sumOfEvenNumbers + 10 + (10 - Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2));
+                        sumOfEvenNumbers = (int) (((Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) % 10)) + ((Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) / 10)));
                     }
+                    sumOfEvenNumbers = sumOfEvenNumbers + totalDigitTestEven;
+                    totalDigitTestEven = 0;
                 } else if ((i % 2) == 0) {
                     totalDigitTestOdd = totalDigitTestOdd + (Integer.parseInt("" + socialInsuranceNumber.charAt(i)));
+
                 }
+
             }
+
             totalSum = sumOfEvenNumbers + totalDigitTestOdd;
-            if ((Integer.parseInt("" + socialInsuranceNumber.charAt(8)) == totalSum - (Integer.parseInt("" + socialInsuranceNumber.charAt(8) * 10)))) {
+            if ((Integer.parseInt("" + socialInsuranceNumber.charAt(8)) == (double) (Math.ceil(totalSum / 10) * 10) - totalSum)) {
+
                 correctSIN = true;
             }
-        }   
+        }
+
         if (correctSIN) {
             System.out.println("The Check Digit of the SIN is correct.");
         } else {
             System.out.println("The Check Digit of the SIN is incorrect.");
         }
-
+        System.out.println(sumOfEvenNumbers);
+        System.out.println(totalDigitTestOdd);
     }
-
 }

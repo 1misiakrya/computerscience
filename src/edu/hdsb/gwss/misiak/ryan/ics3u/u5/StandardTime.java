@@ -20,9 +20,22 @@ public class StandardTime {
      */
     public static void main(String[] args) {
 
+        System.out.println("Enter 1 to convert to Traditional time. Enter 2 to convert to Standard time: ");
+        Scanner inputChoice = new Scanner(System.in);
+
+        int choice = inputChoice.nextInt();
+        if (choice > 2 || choice < 1) {
+            System.out.println("Error - Invalid Entry");
+        }else if (choice == 1){
+            System.out.println("Please enter a Standard Time: ");
+        }else{
+            System.out.println("Please enter a Traditional Time: ");
+        }
+        
+
     }
 
-    public static void convertToTraditional() {
+    public static void convertToTraditional(String time) {
 
         System.out.println("Please enter a Standard Time (hh:mm) : ");
 
@@ -30,13 +43,12 @@ public class StandardTime {
 
         String standardTime = inputStandardTime.nextLine();
         String hours = standardTime.substring(0, 2);
-        String minutes = standardTime.substring(2, 2);
 
         System.out.println("Traditional Time: ");
 
     }
 
-    public static void convertToStandard() {
+    public static void convertToStandard(String time) {
 
         System.out.println("Please enter a traditional time (hh:mm xx) : ");
 
