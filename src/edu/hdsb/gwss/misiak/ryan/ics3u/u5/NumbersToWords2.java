@@ -22,39 +22,47 @@ public class NumbersToWords2 {
     public static int ones;
     public static int teens;
     public static double number;
+    public static String onesString = "";
+    public static int length;
 
     public static void main(String[] args) {
 
         //Getting user's input
-        System.out.println("Enter a three-digit number (use 0 as a place holder): ");
+        System.out.println("Enter a number (0 < x <= 999): ");
 
         Scanner inputNumber = new Scanner(System.in);
         numberString = inputNumber.nextLine();
+        number = Integer.parseInt(numberString);
+        length = numberString.length();
 
         //Checking that user's input works in the program
-        if (number > 999 || number < 0 || (numberString.length()) < 3 || (numberString.length() > 3)) {
+        if (number > 999 || number < 0) {
             System.out.println("Invalid entry.");
         } else {
-            
-            //Running the other methods
-            hundreds();
+            if (length == 1) {
+                ones();
+            } else if (length == 2) {
+                tens();
+                ones();
+                teens();
+            } else if (length == 3) {
+                hundreds();
 
-            tens();
+                tens();
 
-            ones();
+                ones();
 
-            teens();
+                teens();
+            }
         }
     }
 
     public static void hundreds() {
 
         //Finding the digit in the hundreds column
-        number = Integer.parseInt(numberString);
         hundreds = (int) number / 100;
 
         //OUTPUT for hundreds column
-        
         if (hundreds == 1) {
             System.out.print("ONE HUNDRED ");
         } else if (hundreds == 2) {
@@ -107,62 +115,112 @@ public class NumbersToWords2 {
 
     public static void ones() {
 
-        //Finding the digit in the ones column
-        int checkingHundreds = (int) number/100;
-        ones = (int) number % 10;
+        //Finding the digit in the ones column of a 2 or 3-digit number
+        int checkingHundreds;
+        if (length == 2) {
+            checkingHundreds = 0;
+        } else {
+            checkingHundreds = (int) number / 100;
+            ones = (int) number % 10;
+        }
 
-        //OUTPUT for ones column
-        if (number-(checkingHundreds*100) < 10 || (number-checkingHundreds*100) > 19) {
-            if (ones == 1) {
-                System.out.print("ONE");
-            } else if (ones == 2) {
-                System.out.print("TWO");
-            } else if (ones == 3) {
-                System.out.print("THREE");
-            } else if (ones == 4) {
-                System.out.print("FOUR");
-            } else if (ones == 5) {
-                System.out.print("FIVE");
-            } else if (ones == 6) {
-                System.out.print("SIX");
-            } else if (ones == 7) {
-                System.out.print("SEVEN");
-            } else if (ones == 8) {
-                System.out.print("EIGHT");
-            } else if (ones == 9) {
-                System.out.print("NINE");
+        //OUTPUT that checks for the length of the number, then spells out the number in the ones column
+        if (length == 2 || length == 3) {
+            if (number - (checkingHundreds * 100) < 10 || (number - checkingHundreds * 100) > 19 && length == 3) {
+                if (ones == 1) {
+                    onesString = "ONE";
+                } else if (ones == 2) {
+                    onesString = "TWO";
+                } else if (ones == 3) {
+                    onesString = "THREE";
+                } else if (ones == 4) {
+                    onesString = "FOUR";
+                } else if (ones == 5) {
+                    onesString = "FIVE";
+                } else if (ones == 6) {
+                    onesString = "SIX";
+                } else if (ones == 7) {
+                    onesString = "SEVEN";
+                } else if (ones == 8) {
+                    onesString = "EIGHT";
+                } else if (ones == 9) {
+                    onesString = "NINE";
+                }
+            } else if (length == 2 && (number > 19 || number < 10)) {
+                ones = (int) number % 10;
+                if (ones == 1) {
+                    onesString = "ONE";
+                } else if (ones == 2) {
+                    onesString = "TWO";
+                } else if (ones == 3) {
+                    onesString = "THREE";
+                } else if (ones == 4) {
+                    onesString = "FOUR";
+                } else if (ones == 5) {
+                    onesString = "FIVE";
+                } else if (ones == 6) {
+                    onesString = "SIX";
+                } else if (ones == 7) {
+                    onesString = "SEVEN";
+                } else if (ones == 8) {
+                    onesString = "EIGHT";
+                } else if (ones == 9) {
+                    onesString = "NINE";
+                }
             }
         }
+
+        //Spelling out the number if the number is < 10
+        if (number == 1) {
+            onesString = "ONE";
+        } else if (number == 2) {
+            onesString = "TWO";
+        } else if (number == 3) {
+            onesString = "THREE";
+        } else if (number == 4) {
+            onesString = "FOUR";
+        } else if (number == 5) {
+            onesString = "FIVE";
+        } else if (number == 6) {
+            onesString = "SIX";
+        } else if (number == 7) {
+            onesString = "SEVEN";
+        } else if (number == 8) {
+            onesString = "EIGHT";
+        } else if (number == 9) {
+            onesString = "NINE";
+        }
+        System.out.print(onesString);
     }
 
     public static void teens() {
 
         //Checking to see if the user's number is in the teens
-        int hundredsDigit = (int )number/100;
-        teens = (int) number-(hundredsDigit*100);
-        
+        int hundredsDigit = (int) number / 100;
+        teens = (int) number - (hundredsDigit * 100);
+
         //OUTPUT for if the digits are in the teens
         if (teens > 9 && teens < 20) {
             if (teens == 10) {
-                System.out.println("TEN");
+                System.out.print("TEN");
             } else if (teens == 11) {
-                System.out.println("ELEVEN");
+                System.out.print("ELEVEN");
             } else if (teens == 12) {
-                System.out.println("TWELVE");
+                System.out.print("TWELVE");
             } else if (teens == 13) {
-                System.out.println("THIRTEEN");
+                System.out.print("THIRTEEN");
             } else if (teens == 14) {
-                System.out.println("FOURTEEN");
+                System.out.print("FOURTEEN");
             } else if (teens == 15) {
-                System.out.println("FIFTEEN");
+                System.out.print("FIFTEEN");
             } else if (teens == 16) {
-                System.out.println("SIXTEEN");
+                System.out.print("SIXTEEN");
             } else if (teens == 17) {
-                System.out.println("SEVENTEEN");
+                System.out.print("SEVENTEEN");
             } else if (teens == 18) {
-                System.out.println("EIGHTEEN");
+                System.out.print("EIGHTEEN");
             } else {
-                System.out.println("NINETEEN");
+                System.out.print("NINETEEN");
             }
         }
     }

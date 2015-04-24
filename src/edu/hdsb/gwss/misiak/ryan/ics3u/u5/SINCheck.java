@@ -25,10 +25,12 @@ public class SINCheck {
                 + "numbers are \nassigned digits and the last number is a digit check. This program determines "
                 + "if the check \ndigit for a SIN is correct.");
 
+        //Getting user's inputted SIN number
         System.out.println("Enter Social Insurance Number: ");
 
         Scanner inputSIN = new Scanner(System.in);
 
+        //Declaring Variables
         String socialInsuranceNumber = inputSIN.nextLine();
         int totalDigitTestEven = 0;
         int sumOfEvenNumbers = 0;
@@ -36,13 +38,13 @@ public class SINCheck {
         double totalSum;
         boolean correctSIN = false;
 
+        //Calculating using the social insurance number to check if it is correct
         if (socialInsuranceNumber.length() != 9) {
             System.out.println("Error. Incorrect amount of digits entered.");
         } else {
             for (int i = 0; i < 8; i++) {
                 if ((i % 2) == 1) {
                     totalDigitTestEven = totalDigitTestEven + (Integer.parseInt("" + socialInsuranceNumber.charAt(i)) * 2);
-                    System.out.println(totalDigitTestEven);
                     if (Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) > 10) {
                         sumOfEvenNumbers = (int) (((Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) % 10)) + ((Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) / 10)));
                     }
@@ -50,24 +52,21 @@ public class SINCheck {
                     totalDigitTestEven = 0;
                 } else if ((i % 2) == 0) {
                     totalDigitTestOdd = totalDigitTestOdd + (Integer.parseInt("" + socialInsuranceNumber.charAt(i)));
-
                 }
-
             }
 
             totalSum = sumOfEvenNumbers + totalDigitTestOdd;
-            if ((Integer.parseInt("" + socialInsuranceNumber.charAt(8)) == (double) (Math.ceil(totalSum / 10) * 10) - totalSum)) {
+            if ((Integer.parseInt("" + socialInsuranceNumber.charAt(8)) == (double) (Math.ceil(totalSum / 10) * 10) - totalSum - 1)) {
 
                 correctSIN = true;
             }
         }
 
+        //OUTPUT
         if (correctSIN) {
             System.out.println("The Check Digit of the SIN is correct.");
         } else {
             System.out.println("The Check Digit of the SIN is incorrect.");
         }
-        System.out.println(sumOfEvenNumbers);
-        System.out.println(totalDigitTestOdd);
     }
 }
