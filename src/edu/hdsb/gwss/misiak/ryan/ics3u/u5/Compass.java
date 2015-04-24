@@ -62,16 +62,12 @@ public class Compass {
         
         //Converting startDirectionLetter into a word
         if (startingDirectionLetter == 'N') {
-            System.out.println("NORTH");
             startingDirectionWord = "NORTH";
         } else if (startingDirectionLetter == 'S') {
-            System.out.println("SOUTH");
             startingDirectionWord = "SOUTH";
         } else if (startingDirectionLetter == 'W') {
-            System.out.println("WEST");
             startingDirectionWord = "WEST";
         } else if (startingDirectionLetter == 'E') {
-            System.out.println("EAST");
             startingDirectionWord = "EAST";
         } else {
             System.out.println("Error");
@@ -107,16 +103,12 @@ public class Compass {
 
         //OUTPUT to spell out endingDirection
         if (endingDirectionLetter == 'N') {
-            System.out.println("NORTH");
             endingDirectionWord = "NORTH";
         } else if (endingDirectionLetter == 'S') {
-            System.out.println("SOUTH");
             endingDirectionWord = "SOUTH";
         } else if (endingDirectionLetter == 'W') {
-            System.out.println("WEST");
             endingDirectionWord = "WEST";
         } else if (endingDirectionLetter == 'E') {
-            System.out.println("EAST");
             endingDirectionWord = "EAST";
         } else {
             System.out.println("Error");
