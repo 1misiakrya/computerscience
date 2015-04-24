@@ -1,5 +1,5 @@
 /*
- * Name: NumbersToWords
+ * Name: NumbersToWords2
  * Date: April 17, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
