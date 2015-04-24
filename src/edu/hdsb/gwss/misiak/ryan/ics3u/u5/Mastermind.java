@@ -83,6 +83,7 @@ public class Mastermind {
         String computerColourThree = "";
         String computerColour;
         int correctColours = 0;
+        boolean hintMessageWrite = true;
 
         //Changing the random generated numbers into colours
         for (int i = 0; i < 3; i++) {
@@ -134,6 +135,18 @@ public class Mastermind {
             } else {
                 computerColour = computerColourThree;
             }
+
+            if (((firstColour.equals(computerColourOne) || secondColour.equals(computerColourOne) || thirdColour.equals(computerColourOne)) && (computerColourOne.equals(computerColourThree)) && computerColourOne.equals(computerColourTwo))) {
+                if (hintMessageWrite){
+                System.out.println("HINT - Three of the slots are the same colour.");
+                hintMessageWrite = false;
+                }
+            } else if ((firstColour.equals(computerColourOne) && (computerColourOne.equals(computerColourThree) || computerColourOne.equals(computerColourTwo))) || (secondColour.equals(computerColourOne)) && (computerColourOne.equals(computerColourThree) || computerColourOne.equals(computerColourTwo)) || (thirdColour.equals(computerColourOne) && (computerColourOne.equals(computerColourThree) || computerColourOne.equals(computerColourTwo))) || (firstColour.equals(computerColourTwo) ||secondColour.equals(computerColourTwo) || thirdColour.equals(computerColourTwo)) && (computerColourTwo.equals(computerColourThree))) {
+                if (hintMessageWrite){
+                    System.out.println("HINT - Two of the slots are the same colour.");
+                    hintMessageWrite = false;
+                }
+            }
             if (computerColour.equals("R") && (firstColour.equals("R") || secondColour.equals("R") || thirdColour.equals("R"))) {
                 correctColours = correctColours + 1;
             } else if (computerColour.equals("G") && (firstColour.equals("G") || secondColour.equals("G") || thirdColour.equals("G"))) {
@@ -146,7 +159,7 @@ public class Mastermind {
         }
         //Printing the number of correctly guessed colours
         System.out.println("Number of Colours Correct: " + correctColours);
-        
+
         //Changing into check positions method
         checkPositionsCorrect(firstColour, secondColour, thirdColour, computerColourOne, computerColourTwo, computerColourThree);
     }
@@ -169,8 +182,10 @@ public class Mastermind {
         System.out.println("Number of Positions Correct: " + correctPositions);
 
         //OUTPUT if user gets all three positions (and therefore colours) correct
-        if (correctPositions ==3){
+        if (correctPositions == 3) {
             System.out.println("Congradulations! You have guessed all 3 colours correctly! Please exit the game and play again!");
         }
+
+        System.out.println(computerColourOne + computerColourTwo + computerColourThree);
     }
 }
