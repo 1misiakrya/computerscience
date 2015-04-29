@@ -32,7 +32,6 @@ public class SINCheck {
 
         //Declaring Variables
         String socialInsuranceNumber = inputSIN.nextLine();
-        int totalDigitTestEven = 0;
         int sumOfEvenNumbers = 0;
         int totalDigitTestOdd = 0;
         double totalSum;
@@ -42,22 +41,20 @@ public class SINCheck {
         if (socialInsuranceNumber.length() != 9) {
             System.out.println("Error. Incorrect amount of digits entered.");
         } else {
+            int value;
             for (int i = 0; i < 8; i++) {
+                value = Integer.parseInt("" + socialInsuranceNumber.charAt(i));
                 if ((i % 2) == 1) {
-                    totalDigitTestEven = totalDigitTestEven + (Integer.parseInt("" + socialInsuranceNumber.charAt(i)) * 2);
-                    if (Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) > 10) {
-                        sumOfEvenNumbers = (int) (((Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) % 10)) + ((Integer.parseInt("" + socialInsuranceNumber.charAt(i) * 2) / 10)));
-                    }
-                    sumOfEvenNumbers = sumOfEvenNumbers + totalDigitTestEven;
-                    totalDigitTestEven = 0;
+                    value = value * 2;
+                    sumOfEvenNumbers = sumOfEvenNumbers + (value / 10) + (value % 10);
+                    System.out.println(sumOfEvenNumbers);
                 } else if ((i % 2) == 0) {
-                    totalDigitTestOdd = totalDigitTestOdd + (Integer.parseInt("" + socialInsuranceNumber.charAt(i)));
+                    totalDigitTestOdd = totalDigitTestOdd + value;
                 }
             }
 
             totalSum = sumOfEvenNumbers + totalDigitTestOdd;
-            if ((Integer.parseInt("" + socialInsuranceNumber.charAt(8)) == (double) (Math.ceil(totalSum / 10) * 10) - totalSum - 1)) {
-
+            if ((Integer.parseInt("" + socialInsuranceNumber.charAt(8)) == (double) (Math.ceil(totalSum / 10) * 10) - totalSum)) {
                 correctSIN = true;
             }
         }

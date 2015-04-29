@@ -27,38 +27,38 @@ public class RockPaperScissorsGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        rock = new javax.swing.JToggleButton();
+        paper = new javax.swing.JToggleButton();
+        scissors = new javax.swing.JToggleButton();
+        winStatement = new javax.swing.JLabel();
+        winsLossesTies = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToggleButton1.setText("Rock");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        rock.setText("Rock");
+        rock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                rockActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("Paper");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        paper.setText("Paper");
+        paper.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                paperActionPerformed(evt);
             }
         });
 
-        jToggleButton3.setText("Scissors");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        scissors.setText("Scissors");
+        scissors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                scissorsActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("jLabel1");
+        winStatement.setText("jLabel1");
 
-        jLabel2.setText("jLabel2");
+        winsLossesTies.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,37 +69,37 @@ public class RockPaperScissorsGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(winsLossesTies)
+                            .addComponent(winStatement))
                         .addGap(132, 132, 132))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jToggleButton1)
+                        .addComponent(rock)
                         .addGap(76, 76, 76)))
-                .addComponent(jToggleButton2)
+                .addComponent(paper)
                 .addGap(121, 121, 121)
-                .addComponent(jToggleButton3)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addComponent(scissors)
+                .addContainerGap(411, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton3))
+                    .addComponent(rock)
+                    .addComponent(paper)
+                    .addComponent(scissors))
                 .addGap(76, 76, 76)
-                .addComponent(jLabel1)
+                .addComponent(winStatement)
                 .addGap(33, 33, 33)
-                .addComponent(jLabel2)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addComponent(winsLossesTies)
+                .addContainerGap(352, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void rockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rockActionPerformed
 
         String userInput = "Rock";
         String computerChoice = "";
@@ -126,11 +126,11 @@ public class RockPaperScissorsGUI extends javax.swing.JFrame {
             gameEnds = "You win!";
             wins = wins + 1;
         }
-        jLabel1.setText("You threw " + userInput + " and the computer threw \n" + computerChoice + ". " + gameEnds);
-        jLabel2.setText("Wins: " + wins + " Losses: " + losses + " Ties: " + ties);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        winStatement.setText("You threw " + userInput + " and the computer threw \n" + computerChoice + ". " + gameEnds);
+        winsLossesTies.setText("Wins: " + wins + " Losses: " + losses + " Ties: " + ties);
+    }//GEN-LAST:event_rockActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void paperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paperActionPerformed
 
         String userInput = "Paper";
         String computerChoice = "";
@@ -151,10 +151,10 @@ public class RockPaperScissorsGUI extends javax.swing.JFrame {
         } else if (computerChoice.equals("Scissors")) {
             gameEnds = "You lose...";
         }
-        jLabel1.setText("You threw " + userInput + " and the computer threw " + computerChoice + ". " + gameEnds);
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+        winStatement.setText("You threw " + userInput + " and the computer threw " + computerChoice + ". " + gameEnds);
+    }//GEN-LAST:event_paperActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void scissorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scissorsActionPerformed
 
         String userInput = "Scissors";
         String computerChoice = "";
@@ -175,9 +175,9 @@ public class RockPaperScissorsGUI extends javax.swing.JFrame {
         } else if (computerChoice.equals("Rock")) {
             gameEnds = "You lose...";
         }
-        jLabel1.setText("You threw " + userInput + " and the computer threw " + computerChoice + ". " + gameEnds);
+        winStatement.setText("You threw " + userInput + " and the computer threw " + computerChoice + ". " + gameEnds);
 
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_scissorsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,10 +215,10 @@ public class RockPaperScissorsGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton paper;
+    private javax.swing.JToggleButton rock;
+    private javax.swing.JToggleButton scissors;
+    private javax.swing.JLabel winStatement;
+    private javax.swing.JLabel winsLossesTies;
     // End of variables declaration//GEN-END:variables
 }

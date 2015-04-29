@@ -15,6 +15,11 @@ import java.util.Scanner;
  */
 public class Mastermind {
 
+    static int RED = 1;
+    static int YELLOW = 2;
+    static int BLUE = 3;
+    static int GREEN = 4;
+
     /**
      * @param args the command line arguments
      */
@@ -53,6 +58,17 @@ public class Mastermind {
 
             System.out.println("Your guesses are: " + firstGuess + " " + secondGuess + " " + thirdGuess);
 
+            String userColours = firstGuess + secondGuess + thirdGuess;
+            for (int i = 0; i < userColours.length(); i++) {
+                if (i == 0) {
+                    colourToInt(firstGuess);
+                } else if (i == 1) {
+                    colourToInt(secondGuess);
+                } else if (i == 2) {
+                    colourToInt(thirdGuess);
+                }
+            }
+
             if ((!firstGuess.equals("R") && !firstGuess.equals("Y") && !firstGuess.equals("B") && !firstGuess.equals("G")) || (!secondGuess.equals("R") && !secondGuess.equals("Y") && !secondGuess.equals("B") && !secondGuess.equals("G")) || (!thirdGuess.equals("R") && !thirdGuess.equals("Y") && !thirdGuess.equals("B") && !thirdGuess.equals("G"))) {
                 System.out.println("ERROR - Invalid Guess. Thank you for playing!");
             } else {
@@ -73,6 +89,25 @@ public class Mastermind {
                 }
             }
         } while (continueGame);
+    }
+
+    public static int colourToInt(String s) {
+        
+        int colour = -1;
+        switch (s) {
+            case "R":
+                colour = RED;
+                break;
+            case "Y":
+                colour = YELLOW;
+                break;
+            case "B":
+                colour = BLUE;
+                break;
+            case "G":
+                colour = GREEN;
+        }
+        return colour;
     }
 
     public static void checkColoursCorrect(String firstColour, String secondColour, String thirdColour, int computerChoiceOne, int computerChoiceTwo, int computerChoiceThree) {
@@ -137,16 +172,18 @@ public class Mastermind {
             }
 
             if (((firstColour.equals(computerColourOne) || secondColour.equals(computerColourOne) || thirdColour.equals(computerColourOne)) && (computerColourOne.equals(computerColourThree)) && computerColourOne.equals(computerColourTwo))) {
-                if (hintMessageWrite){
-                System.out.println("HINT - Three of the slots are the same colour.");
-                hintMessageWrite = false;
+                
+                if (hintMessageWrite) {
+                    System.out.println("HINT - Three of the slots are the same colour.");
+                    hintMessageWrite = false;
                 }
-            } else if ((firstColour.equals(computerColourOne) && (computerColourOne.equals(computerColourThree) || computerColourOne.equals(computerColourTwo))) || (secondColour.equals(computerColourOne)) && (computerColourOne.equals(computerColourThree) || computerColourOne.equals(computerColourTwo)) || (thirdColour.equals(computerColourOne) && (computerColourOne.equals(computerColourThree) || computerColourOne.equals(computerColourTwo))) || (firstColour.equals(computerColourTwo) ||secondColour.equals(computerColourTwo) || thirdColour.equals(computerColourTwo)) && (computerColourTwo.equals(computerColourThree))) {
-                if (hintMessageWrite){
+            } else if ((firstColour.equals(computerColourOne) && (computerColourOne.equals(computerColourThree) || computerColourOne.equals(computerColourTwo))) || (secondColour.equals(computerColourOne)) && (computerColourOne.equals(computerColourThree) || computerColourOne.equals(computerColourTwo)) || (thirdColour.equals(computerColourOne) && (computerColourOne.equals(computerColourThree) || computerColourOne.equals(computerColourTwo))) || (firstColour.equals(computerColourTwo) || secondColour.equals(computerColourTwo) || thirdColour.equals(computerColourTwo)) && (computerColourTwo.equals(computerColourThree))) {
+                if (hintMessageWrite) {
                     System.out.println("HINT - Two of the slots are the same colour.");
                     hintMessageWrite = false;
                 }
             }
+            
             if (computerColour.equals("R") && (firstColour.equals("R") || secondColour.equals("R") || thirdColour.equals("R"))) {
                 correctColours = correctColours + 1;
             } else if (computerColour.equals("G") && (firstColour.equals("G") || secondColour.equals("G") || thirdColour.equals("G"))) {

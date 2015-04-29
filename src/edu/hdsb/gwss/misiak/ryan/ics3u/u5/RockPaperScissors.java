@@ -23,8 +23,11 @@ public class RockPaperScissors {
         //Program Title
         System.out.println("Rock-Paper-Scissors");
 
-        //Declaring boolean for continuing game
+        //Declaring variables
         boolean continueGame = false;
+        int ties = 0;
+        int wins = 0;
+        int losses = 0;
 
         //Getting user's input
         do {
@@ -43,18 +46,16 @@ public class RockPaperScissors {
                 computerChoice = "SCISSORS";
             }
 
+            choice = choice.toUpperCase();
             int winsForThisGame = gamesWon(choice, computerChoice);
             int lossesForThisGame = gamesLost(choice, computerChoice);
             int tiesForThisGame = gamesTied(choice, computerChoice);
-
-            int ties = 0;
-            int wins = 0;
-            int losses = 0;
 
             wins = wins + winsForThisGame;
             losses = losses + lossesForThisGame;
             ties = ties + tiesForThisGame;
 
+            System.out.println("You threw " + choice + " and the computer threw " + computerChoice);
             System.out.println("Wins: " + wins + " Losses: " + losses + " Ties: " + ties);
 
             System.out.println("Would you like to play again? (yes or no)");
@@ -75,7 +76,6 @@ public class RockPaperScissors {
     public static int gamesWon(String userInput, String computerChoice) {
 
         //Declaring variables
-        String gameEnds = "";
         int wins = 0;
 
         //Converting user's input to uppercase
@@ -84,74 +84,53 @@ public class RockPaperScissors {
         //OUTPUT
         if (userInput.equals("ROCK")) {
             if (computerChoice.equals("SCISSORS")) {
-                gameEnds = "You win!";
                 wins = wins + 1;
             }
         } else if (userInput.equals("SCISSORS")) {
             if (computerChoice.equals("PAPER")) {
-                gameEnds = "You win!";
                 wins = wins + 1;
             }
         } else if (userInput.equals("PAPER")) {
             if (computerChoice.equals("ROCK")) {
-                gameEnds = "You win!";
                 wins = wins + 1;
             }
         }
-        computerChoice = computerChoice.toUpperCase();
-        System.out.println("You threw " + userInput + " and the computer threw " + computerChoice + ". " + gameEnds);
         return wins;
     }
 
     public static int gamesLost(String userInput, String computerChoice) {
+        //Declaring variables
         int losses = 0;
-        String gameEnds = "";
 
+        //OUTPUT
         if (userInput.equals("ROCK")) {
             if (computerChoice.equals("PAPER")) {
-                gameEnds = "You lose...";
                 losses = losses + 1;
             }
         } else if (userInput.equals("SCISSORS")) {
             if (computerChoice.equals("ROCK")) {
-                gameEnds = "You lose...";
                 losses = losses + 1;
 
             }
         } else if (userInput.equals("PAPER")) {
             if (computerChoice.equals("SCISSORS")) {
-                gameEnds = "You lose...";
                 losses = losses + 1;
             }
 
         }
-        System.out.println("You threw " + userInput + " and the computer threw " + computerChoice + ". " + gameEnds);
         return losses;
 
     }
 
     public static int gamesTied(String userInput, String computerChoice) {
+
+        //Declaring variables
         int ties = 0;
-        String gameEnds = "";
 
-        if (userInput.equals("ROCK")) {
-            if (computerChoice.equals(userInput)) {
-                gameEnds = "It's a tie!";
-                ties = ties + 1;
-            } else if (userInput.equals("SCISSORS")) {
-                if (computerChoice.equals(userInput)) {
-                    gameEnds = "It's a tie!";
-                    ties = ties + 1;
-
-                }
-            } else if (userInput.equals("PAPER")) {
-                if (computerChoice.equals(userInput)) {
-                    gameEnds = "It's a tie!";
-                    ties = ties + 1;
-                }
-            }
+        //OUTPUT
+        if (computerChoice.equals(userInput)) {
+            ties = ties + 1;
         }
-        System.out.println("You threw " + userInput + " and the computer threw " + computerChoice + ". " + gameEnds);
         return ties;
     }
 }
