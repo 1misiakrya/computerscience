@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: Golf
+ * Date: April 27, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program records the score for 18 holes of golf.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u6;
 
@@ -36,7 +38,7 @@ public class GolfStats extends javax.swing.JFrame {
         totalScore = new javax.swing.JLabel();
         lowestScore = new javax.swing.JLabel();
         highestScore = new javax.swing.JLabel();
-        userInput = new javax.swing.JTextField();
+        numberOfGolfScoresEntered = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,10 +63,9 @@ public class GolfStats extends javax.swing.JFrame {
 
         highestScore.setText("Highest Score: ");
 
-        userInput.setText("jTextField1");
-        userInput.addActionListener(new java.awt.event.ActionListener() {
+        numberOfGolfScoresEntered.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userInputActionPerformed(evt);
+                numberOfGolfScoresEnteredActionPerformed(evt);
             }
         });
 
@@ -83,7 +84,7 @@ public class GolfStats extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(displayGolfScores)
                         .addGap(33, 33, 33)
-                        .addComponent(userInput, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(numberOfGolfScoresEntered, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(title)))
@@ -99,7 +100,7 @@ public class GolfStats extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(displayGolfScores)
-                    .addComponent(userInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numberOfGolfScoresEntered, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(numberOfGolfScores)
                 .addGap(28, 28, 28)
@@ -123,28 +124,31 @@ public class GolfStats extends javax.swing.JFrame {
         int lowestHoleScore = userScore[1];
         int highestHoleScore = userScore[1];
         int totalHoleScore = 0;
+        int numberOfGolfScores = 0;
 
         for (int hole = 0; hole < 18; hole++) {
             System.out.print("Please enter your score in hole " + (hole + 1) + ": ");
             userScore[hole] = inputScore.nextInt();
-            if (lowestHoleScore > userScore[hole]) {
-                lowestHoleScore = userScore[hole];
+            if (lowestHoleScore > userScore[hole + 1]) {
+                lowestHoleScore = userScore[hole + 1];
             }
             if (highestHoleScore < userScore[hole]){
                 highestHoleScore = userScore[hole];
             }
+            numberOfGolfScores = numberOfGolfScores + 1;
             totalHoleScore = totalHoleScore + userScore[hole];
             highestScore.setText("Highest Score: " + highestHoleScore);
             lowestScore.setText("Lowest Score: " + lowestHoleScore);
             totalScore.setText("Total: " + totalHoleScore);
         }
-
+        
+        numberOfGolfScoresEntered.setText("Number of Golf Scores Entered: " + numberOfGolfScores);
 
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void userInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userInputActionPerformed
+    private void numberOfGolfScoresEnteredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberOfGolfScoresEnteredActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userInputActionPerformed
+    }//GEN-LAST:event_numberOfGolfScoresEnteredActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,8 +196,8 @@ public class GolfStats extends javax.swing.JFrame {
     private javax.swing.JLabel information;
     private javax.swing.JLabel lowestScore;
     private javax.swing.JLabel numberOfGolfScores;
+    private javax.swing.JTextField numberOfGolfScoresEntered;
     private javax.swing.JLabel title;
     private javax.swing.JLabel totalScore;
-    private javax.swing.JTextField userInput;
     // End of variables declaration//GEN-END:variables
 }

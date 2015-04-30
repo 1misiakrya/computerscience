@@ -34,7 +34,7 @@
                   <Group type="102" attributes="0">
                       <Component id="displayGolfScores" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="userInput" min="-2" pref="116" max="-2" attributes="0"/>
+                      <Component id="numberOfGolfScoresEntered" min="-2" pref="116" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
@@ -55,7 +55,7 @@
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="displayGolfScores" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="userInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="numberOfGolfScoresEntered" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="numberOfGolfScores" min="-2" max="-2" attributes="0"/>
@@ -115,12 +115,9 @@
         <Property name="text" type="java.lang.String" value="Highest Score: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="userInput">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="numberOfGolfScoresEntered">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userInputActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numberOfGolfScoresEnteredActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
