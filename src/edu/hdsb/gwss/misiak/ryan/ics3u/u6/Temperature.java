@@ -3,7 +3,7 @@
  * Date: April 30, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Description: This program 
+ * Description: This program records the daily temperature for the week.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u6;
 

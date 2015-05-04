@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: TemperatureGUI
+ * Date: April 29, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program records the daily temperature for a week
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u6;
 
