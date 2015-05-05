@@ -182,7 +182,7 @@ public class GolfStats extends javax.swing.JFrame {
 //        Scanner inputScore = new Scanner(System.in);
 //        
         int lowestHoleScore = userScore[0];
-        int highestHoleScore = userScore[0];
+
         int totalHoleScore = 0;
 
 
@@ -191,13 +191,10 @@ public class GolfStats extends javax.swing.JFrame {
                 lowestHoleScore = userScore[hole];
             }
 
-            if (highestHoleScore < userScore[hole]) {
-                highestHoleScore = userScore[hole];
-            }
             
 
             totalHoleScore = totalHoleScore + userScore[hole];
-            highestScore.setText("Highest Score: " + highestHoleScore);
+            highestScore.setText("Highest Score: " + ArrayHelper.max(userScore) );
             lowestScore.setText("Lowest Score: " + lowestHoleScore);
             totalScore.setText("Total: " + totalHoleScore);
         }
