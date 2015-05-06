@@ -19,31 +19,35 @@ public class BubbleSort {
     public static void main(String[] args) {
 
         System.out.println("Bubble Sort");
-        int chosenIntegers[] = new int[10];
+        int data[] = new int[10];
+        int comparisons = 0;
+        int swaps = 0;
 
         // GENERATE RANDOM NUMBERS
-        for (int i = 0; i < chosenIntegers.length; i++) {
-            chosenIntegers[i] = (int) (Math.random() * 1000) + 1;
+        for (int i = 0; i < data.length; i++) {
+            data[i] = (int) (Math.random() * 1000) + 1;
         }
 
         // DISPLAY ARRAY
-        ArrayHelper.displayArray(chosenIntegers);
+        ArrayHelper.displayArray(data);
 
         // BUBBLE SORT
-        for (int pass = 0; pass < 10; pass++) {
-            for (int i = 0; i < 10; i++) {
-                if (chosenIntegers[i] > chosenIntegers[i + 1]) {
-                    ArrayHelper.swap(chosenIntegers, i, i + 1);
-                    chosenIntegers[i] = i;
+        for (int pass = 0; pass < data.length; pass++) {
+            for (int i = 0; i < data.length -1; i++) {
+                if (data[i] > data[i + 1]) {
+                    ArrayHelper.swap(data, i, i + 1);
+                    swaps++;
                 }
-
+                comparisons++;
             }
 
         }
 
         // DISPLAY ARRAY
-        ArrayHelper.displayArray(chosenIntegers);
+        ArrayHelper.displayArray(data);
 
+        System.out.println("Comparisons: " + comparisons);
+        System.out.println("Swaps: " + swaps);
     }
 
 }

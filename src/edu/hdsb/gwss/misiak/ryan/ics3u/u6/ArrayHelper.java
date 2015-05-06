@@ -22,17 +22,16 @@ public class ArrayHelper {
         }
         return max;
     }
-    
-    public static void swap(int[] data, int j, int k ) {
-        int temp;
-        temp = j;
-        j = k;
-        k = temp;
+
+    public static void swap(int[] data, int i, int j) {
+        int temp = data[i];
+        data[i] = data[j];
+        data[j] = temp;
     }
-    
-    public static void displayArray( int[] data ) {
+
+    public static void displayArray(int[] data) {
         for (int i = 0; i < data.length; i++) {
-            System.out.print( data[i] + " " );
+            System.out.print(data[i] + " ");
         }
         System.out.println();
     }
