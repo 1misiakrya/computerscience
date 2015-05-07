@@ -1,9 +1,7 @@
 /*
- * Name: BubbleSort
- * Date: May 6, 2015
- * Version: v0.1
- * Author: Mr. R. Misiak
- * Description: This program sorts the numbers in an array from least to greatest.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u6;
 
@@ -11,16 +9,15 @@ package edu.hdsb.gwss.misiak.ryan.ics3u.u6;
  *
  * @author 1misiakrya
  */
-public class SelectionSort {
+public class BubbleSort2 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        System.out.println("Selection Sort");
+        System.out.println("Bubble Sort Two");
         int data[] = new int[10];
-        int temp = 0;
         int comparisons = 0;
         int swaps = 0;
 
@@ -32,18 +29,15 @@ public class SelectionSort {
         // DISPLAY ARRAY
         ArrayHelper.displayArray(data);
 
-        // SELECTION SORT
+        // BUBBLE SORT
         for (int pass = 0; pass < data.length; pass++) {
             for (int i = 0; i < data.length - 1; i++) {
                 if (data[i] > data[i + 1]) {
-                    temp = data[i];
-                } else {
-                    temp = data[i + 1];
+                    ArrayHelper.swap(data, i, i + 1);
+                    swaps++;
                 }
                 comparisons++;
             }
-            ArrayHelper.swap(data, data[data.length - pass], temp);
-            swaps++;
 
         }
 

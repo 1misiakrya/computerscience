@@ -36,4 +36,8 @@ public class ArrayHelper {
         System.out.println();
     }
 
+    public static void search() {
+
+    }
+
 }
