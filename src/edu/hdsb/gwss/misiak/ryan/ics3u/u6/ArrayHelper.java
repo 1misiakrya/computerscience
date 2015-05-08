@@ -3,7 +3,7 @@
  * Date: May 4, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Description: 
+ * Description: This program consists of methods used in other programs.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u6;
 
@@ -26,6 +26,12 @@ public class ArrayHelper {
     public static void swap(int[] data, int i, int j) {
         int temp = data[i];
         data[i] = data[j];
+        data[j] = temp;
+    }
+
+    public static void selectionSwap(int[] data, int i, int j, int k) {
+        int temp = i;
+        data[k] = data[j];
         data[j] = temp;
     }
 

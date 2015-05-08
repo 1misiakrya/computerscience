@@ -20,9 +20,11 @@ public class SelectionSort {
 
         System.out.println("Selection Sort");
         int data[] = new int[10];
-        int temp = 0;
         int comparisons = 0;
         int swaps = 0;
+        int highestValue = 0;
+        int dataWhenHighestValue = 0;
+        int size = data.length;
 
         // GENERATE RANDOM NUMBERS
         for (int i = 0; i < data.length; i++) {
@@ -33,16 +35,17 @@ public class SelectionSort {
         ArrayHelper.displayArray(data);
 
         // SELECTION SORT
-        for (int pass = 0; pass < data.length; pass++) {
+        for (int pass = 0; pass < data.length - 1; pass++) {
             for (int i = 0; i < data.length - 1; i++) {
-                if (data[i] > data[i + 1]) {
-                    temp = data[i];
-                } else {
-                    temp = data[i + 1];
+                if (data[i] > highestValue) {
+                    highestValue = data[i];
+                    dataWhenHighestValue = i;
                 }
+                ArrayHelper.displayArray(data);
                 comparisons++;
+
             }
-            ArrayHelper.swap(data, data[data.length - pass], temp);
+            ArrayHelper.selectionSwap(data, highestValue, data[size - pass], dataWhenHighestValue);
             swaps++;
 
         }
