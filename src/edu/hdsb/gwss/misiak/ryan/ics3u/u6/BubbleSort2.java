@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: BubbleSort 2
+ * Date: May 6, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program sorts the numbers in an array from least to greatest using
+bubble sorting.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u6;
 
@@ -16,6 +19,7 @@ public class BubbleSort2 {
      */
     public static void main(String[] args) {
 
+        //Intro to program
         System.out.println("Bubble Sort Two");
         int data[] = new int[10];
         int comparisons = 0;
@@ -46,6 +50,9 @@ public class BubbleSort2 {
 
         System.out.println("Comparisons: " + comparisons);
         System.out.println("Swaps: " + swaps);
+        
+//        ArrayHelper.linearSearch( data[1] );
+        
 
     }
 

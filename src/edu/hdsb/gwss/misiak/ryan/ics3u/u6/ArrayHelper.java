@@ -29,12 +29,6 @@ public class ArrayHelper {
         data[j] = temp;
     }
 
-    public static void selectionSwap(int[] data, int i, int j, int k) {
-        int temp = i;
-        data[k] = data[j];
-        data[j] = temp;
-    }
-
     public static void displayArray(int[] data) {
         for (int i = 0; i < data.length; i++) {
             System.out.print(data[i] + " ");
@@ -42,7 +36,7 @@ public class ArrayHelper {
         System.out.println();
     }
 
-    public static void search() {
+    public static void linearSearch(int[] data) {
 
     }
 

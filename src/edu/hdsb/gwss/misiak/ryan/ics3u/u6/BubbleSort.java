@@ -3,7 +3,8 @@
  * Date: May 4, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Description: This program sorts the numbers in an array from least to greatest.
+ * Description: This program sorts the numbers in an array from least to greatest using 
+bubble sort.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u6;
 
@@ -18,6 +19,7 @@ public class BubbleSort {
      */
     public static void main(String[] args) {
 
+        //Intro to program
         System.out.println("Bubble Sort");
         int data[] = new int[10];
         int comparisons = 0;

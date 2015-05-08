@@ -1,5 +1,5 @@
 /*
- * Name: BubbleSort
+ * Name: SelectionSort
  * Date: May 6, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
@@ -18,13 +18,12 @@ public class SelectionSort {
      */
     public static void main(String[] args) {
 
+        //Intro to program
         System.out.println("Selection Sort");
         int data[] = new int[10];
         int comparisons = 0;
         int swaps = 0;
-        int highestValue = 0;
-        int dataWhenHighestValue = 0;
-        int size = data.length;
+        int dataWhenHighestValue;
 
         // GENERATE RANDOM NUMBERS
         for (int i = 0; i < data.length; i++) {
@@ -36,16 +35,14 @@ public class SelectionSort {
 
         // SELECTION SORT
         for (int pass = 0; pass < data.length - 1; pass++) {
-            for (int i = 0; i < data.length - 1; i++) {
-                if (data[i] > highestValue) {
-                    highestValue = data[i];
+            dataWhenHighestValue = 0;
+            for (int i = 0; i < data.length - pass; i++) {
+                if (data[i] > data[dataWhenHighestValue]) {
                     dataWhenHighestValue = i;
                 }
-                ArrayHelper.displayArray(data);
                 comparisons++;
-
             }
-            ArrayHelper.selectionSwap(data, highestValue, data[size - pass], dataWhenHighestValue);
+            ArrayHelper.swap(data, data.length - pass - 1, dataWhenHighestValue);
             swaps++;
 
         }
