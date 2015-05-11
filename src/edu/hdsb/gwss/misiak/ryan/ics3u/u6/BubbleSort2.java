@@ -51,7 +51,8 @@ public class BubbleSort2 {
         System.out.println("Comparisons: " + comparisons);
         System.out.println("Swaps: " + swaps);
         
-//        ArrayHelper.linearSearch( data[1] );
+        // LINEAR SEARCH
+        ArrayHelper.linearSearch( data, 10);
         
 
     }
