@@ -73,14 +73,42 @@ public class ArrayHelper {
     }
 
     public static int average(int[] data) {
-        
+
         int sum = 0;
-        int averageValue; 
+        int averageValue;
         for (int i = 0; i < data.length; i++) {
             sum = sum + data[i];
         }
         averageValue = sum / data.length;
         return averageValue;
+    }
+
+    public static int binarySearch(int[] data, int searchValue) {
+
+        int rightSide = data.length;
+        int leftSide = data[0];
+        int middle = data.length / 2;
+        boolean valueFound = false;
+
+        int valueOfArrayAtSearchValue = -1;
+
+        while (valueFound == false) {
+            if (data[middle] == searchValue) {
+                valueOfArrayAtSearchValue = data[middle];
+                valueFound = true;
+            } else if (data[middle] < searchValue) {
+                leftSide = middle;
+                middle = data[data.length - (data.length - leftSide) / 2];
+            } else if (data[middle] < searchValue) {
+                rightSide = middle;
+                middle = data[data.length - rightSide - (data.length - rightSide) / 2];
+            }
+            if (leftSide == rightSide) {
+                valueOfArrayAtSearchValue = -1;
+                valueFound = true;
+            }
+        }
+        return valueOfArrayAtSearchValue;
     }
 
 }

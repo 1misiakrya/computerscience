@@ -56,6 +56,9 @@ public class SelectionSort2 {
 
         // LINEAR SEARCH
         ArrayHelper.linearSearch(data, 10);
+        
+        // BINARY SEARCH
+        System.out.println(ArrayHelper.binarySearch(data, 10));
     }
 
 }

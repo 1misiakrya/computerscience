@@ -4,7 +4,7 @@
  * Version: v0.1
  * Author: Mr. R. Misiak
  * Description: This program sorts the numbers in an array from least to greatest using
-bubble sorting.
+ bubble sorting.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u6;
 
@@ -50,10 +50,12 @@ public class BubbleSort2 {
 
         System.out.println("Comparisons: " + comparisons);
         System.out.println("Swaps: " + swaps);
-        
+
         // LINEAR SEARCH
-        ArrayHelper.linearSearch( data, 10);
-        
+        ArrayHelper.linearSearch(data, 10);
+
+        // BINARY SEARCH
+        ArrayHelper.binarySearch(data, 10);
 
     }
 
