@@ -18,31 +18,32 @@ public class ArrayTester {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         System.out.println("Array Tester \n");
-        
+
         testingMaxAndMinimum();
         testingAverage();
-        
+        testingSum();
+
     }
 
     public static void testingMaxAndMinimum() {
-        
+
         // TESTING MAX & MIN
         System.out.println("TESTING MAXIMUM AND MINIMUM:");
 
-        int[] randomNumber = new int[10];
-        for (int i = 0; i < randomNumber.length; i++) {
-            randomNumber[i] = (int) (Math.random() * 100);
-            System.out.print(randomNumber[i] + " ");
+        int[] randomNumberArray = new int[10];
+        for (int i = 0; i < randomNumberArray.length; i++) {
+            randomNumberArray[i] = (int) (Math.random() * 100);
+            System.out.print(randomNumberArray[i] + " ");
         }
         System.out.println("\n");
 
         // MAX
-        System.out.println("Maximum: " + ArrayHelper.max(randomNumber));
+        System.out.println("Maximum: " + ArrayHelper.max(randomNumberArray));
 
         // MIN
-        System.out.println("Minimum: " + ArrayHelper.min(randomNumber) + "\n");
+        System.out.println("Minimum: " + ArrayHelper.min(randomNumberArray) + "\n");
 
     }
 
@@ -50,13 +51,28 @@ public class ArrayTester {
         // TESTING AVERAGE
         System.out.println("TESTING AVERAGE:");
 
-        int[] randomNumber = new int[10];
-        for (int i = 0; i < randomNumber.length; i++) {
-            randomNumber[i] = (int) (Math.random() * 100);
-            System.out.print(randomNumber[i] + " ");
+        int[] randomNumberArray = new int[10];
+        for (int i = 0; i < randomNumberArray.length; i++) {
+            randomNumberArray[i] = (int) (Math.random() * 100);
+            System.out.print(randomNumberArray[i] + " ");
         }
         System.out.println("\n");
         // AVERAGE
-        System.out.println("Average Value: " + ArrayHelper.average(randomNumber));
+        System.out.println("Average Value: " + ArrayHelper.average(randomNumberArray) + "\n");
+    }
+
+    public static void testingSum() {
+        // TESTING SUM
+        System.out.println("TESTING SUM:");
+
+        int[] randomNumberArray = new int[10];
+        for (int i = 0; i < randomNumberArray.length; i++) {
+            randomNumberArray[i] = (int) (Math.random() * 100);
+            System.out.print(randomNumberArray[i] + " ");
+        }
+        System.out.println("\n");
+        // SUM
+        System.out.println("Sum: " + ArrayHelper.sum(randomNumberArray) + "\n");
+
     }
 }
