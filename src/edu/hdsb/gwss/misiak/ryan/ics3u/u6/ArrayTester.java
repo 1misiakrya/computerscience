@@ -1,6 +1,6 @@
 /*
  * Name: ArrayTester
- * Date: May 4, 2015
+ * Date: May 11, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
  * Description: This program tests the methods in ArrayHelper to see if they work
@@ -19,14 +19,17 @@ public class ArrayTester {
      */
     public static void main(String[] args) {
 
+        // TITLE
         System.out.println("Array Tester \n");
 
+        // CALLING EACH TEST METHOD
         testingMaxAndMinimum();
         testingAverage();
         testingSum();
         testingBubbleSort();
         testingSelectionSort();
-        testingSearches();
+        testingLinearSearch();
+        testingBinarySearch();
 
     }
 
@@ -35,7 +38,10 @@ public class ArrayTester {
         // TESTING MAX & MIN
         System.out.println("TESTING MAXIMUM AND MINIMUM:");
 
+        // DECLARING VARIABLES
         int[] randomNumberArray = new int[10];
+
+        // CREATING VALUES FOR THE ARRAY
         for (int i = 0; i < randomNumberArray.length; i++) {
             randomNumberArray[i] = (int) (Math.random() * 100);
         }
@@ -53,7 +59,7 @@ public class ArrayTester {
         int min = ArrayHelper.min(randomNumberArray);
         assert (min == -1);
 
-        System.out.println("\nTEST CASE #1A RESULTS - passed\n");
+        System.out.println("\nTEST CASE MAX/MIN. RESULTS - passed\n");
     }
 
     public static void testingAverage() {
@@ -61,7 +67,10 @@ public class ArrayTester {
         // TESTING AVERAGE
         System.out.println("TESTING AVERAGE:");
 
+        // DECLARING VARIABLES
         int[] randomNumberArray = new int[10];
+
+        // CREATING VALUES FOR THE ARRAY
         for (int i = 0; i < randomNumberArray.length; i++) {
             randomNumberArray[i] = i;
         }
@@ -72,7 +81,7 @@ public class ArrayTester {
         int average = ArrayHelper.average(randomNumberArray);
         assert (average == 4);
 
-        System.out.println("\nTEST CASE #1A RESULTS - passed\n");
+        System.out.println("\nTEST CASE AVERAGE. RESULTS - passed\n");
     }
 
     public static void testingSum() {
@@ -80,7 +89,10 @@ public class ArrayTester {
         // TESTING SUM
         System.out.println("TESTING SUM:");
 
+        // DECLARING VARIABLES
         int[] randomNumberArray = new int[10];
+
+        // CREATING VALUES FOR THE ARRAY
         for (int i = 0; i < randomNumberArray.length; i++) {
             randomNumberArray[i] = 1;
         }
@@ -91,7 +103,7 @@ public class ArrayTester {
         int sum = ArrayHelper.sum(randomNumberArray);
         assert (sum == 10);
 
-        System.out.println("\nTEST CASE #1A RESULTS - passed\n");
+        System.out.println("\nTEST CASE SUM. RESULTS - passed\n");
     }
 
     public static void testingBubbleSort() {
@@ -99,7 +111,10 @@ public class ArrayTester {
         // TESTING BUBBLE SORT
         System.out.println("TESTING BUBBLE SORT \n");
 
+        // DECLARING VARIABLES
         int[] randomNumberArray = new int[10];
+
+        // CREATING VALUES FOR THE ARRAY
         for (int i = 0; i < randomNumberArray.length; i++) {
             randomNumberArray[i] = (int) (Math.random() * 100);
         }
@@ -115,7 +130,7 @@ public class ArrayTester {
         // DISPLAY ARRAY
         ArrayHelper.displayArray(randomNumberArray);
 
-        System.out.println("\nTEST CASE #1A RESULTS - passed\n");
+        System.out.println("\nTEST CASE BUBBLE SORT. RESULTS - passed\n");
     }
 
     public static void testingSelectionSort() {
@@ -123,7 +138,10 @@ public class ArrayTester {
         // TESTING BUBBLE SORT
         System.out.println("\nTESTING SELECTION SORT \n");
 
+        // DECLARING VARIABLES
         int[] randomNumberArray = new int[10];
+
+        // CREATING VALUES FOR THE ARRAY
         for (int i = 0; i < randomNumberArray.length; i++) {
             randomNumberArray[i] = (int) (Math.random() * 100);
         }
@@ -139,45 +157,72 @@ public class ArrayTester {
         // DISPLAY ARRAY
         ArrayHelper.displayArray(randomNumberArray);
 
-        System.out.println("\nTEST CASE #1A RESULTS - passed\n");
+        System.out.println("\nTEST CASE SELECTION SORT. RESULTS - passed\n");
     }
 
-    public static void testingSearches() {
+    public static void testingLinearSearch() {
 
-        // TESTING SEARCHES
-        System.out.println("\nTESTING SEARCHES");
+        System.out.println("\nTESTING LINEAR SEARCH\n");
+
+        // DECLARING VARIABLES
         int searchValue = 20;
-        System.out.println("Value Being Searched For: " + searchValue);
-
         int[] randomNumberArray = new int[10];
+
+        // CREATING VALUES FOR THE ARRAY
         for (int i = 0; i < randomNumberArray.length; i++) {
             randomNumberArray[i] = i;
         }
         randomNumberArray[7] = searchValue;
         ArrayHelper.bubbleSort(randomNumberArray);
 
-        // TESTING LINEAR SEARCH
-        int valueFoundLinear = ArrayHelper.linearSearch(randomNumberArray, searchValue);
-        System.out.println("Value Found in Linear Search: " + valueFoundLinear);
-        assert (valueFoundLinear == searchValue);
+        System.out.println("Value Being Searched For Case A: " + searchValue);
+        int valueFoundLinearCaseA = ArrayHelper.linearSearch(randomNumberArray, searchValue);
+        assert (valueFoundLinearCaseA == searchValue);
 
-        System.out.println("\nTEST CASE #1A RESULTS - passed\n");
+        System.out.println("TEST CASE #1A (Variable is in array). RESULTS - passed");
+        System.out.println("Value Found in Linear Search Case A: " + valueFoundLinearCaseA);
 
-        // TESTING BINARY SEARCH
+        // CASE B - Variable not found
+        searchValue = -12;
+        System.out.println("\nValue Being Searched For Case B: " + searchValue);
+        int valueFoundLinearCaseB = ArrayHelper.binarySearch(randomNumberArray, searchValue);
+        assert (valueFoundLinearCaseB == -1);
+
+        System.out.println("TEST CASE #1B (Variable is not in array). RESULTS - passed");
+        System.out.println("Value Found in Linear Search Case B: " + valueFoundLinearCaseB + "\n");
+    }
+
+    public static void testingBinarySearch() {
+
         System.out.println("\nTESTING BINARY SEARCH\n");
 
-        int valueFoundBinary = ArrayHelper.binarySearch(randomNumberArray, searchValue);
-        System.out.println("Value Found in Binary Search: " + valueFoundBinary);
-        assert (valueFoundBinary == searchValue);
+        // DECLARING VARIABLES
+        int searchValue = 20;
+        System.out.println("Value Being Searched For Case A: " + searchValue);
+        int[] randomNumberArray = new int[10];
 
-        System.out.println("\nTEST CASE #1A RESULTS - passed");
-    }
-    
-    public static void testingLinearSearches(){
-        
-    }
-    
-    public static void testingBinarySearch(){
-        
+        // CREATING VALUES FOR THE ARRAY
+        for (int i = 0; i < randomNumberArray.length; i++) {
+            randomNumberArray[i] = i;
+        }
+
+        // CASE A - Variable found
+        randomNumberArray[7] = searchValue;
+        ArrayHelper.bubbleSort(randomNumberArray);
+
+        System.out.println("TEST CASE #1A (Variable is in array). RESULTS - passed");
+        int valueFoundBinaryCaseA = ArrayHelper.binarySearch(randomNumberArray, searchValue);
+        System.out.println("Value Found in Binary Search Case A: " + valueFoundBinaryCaseA);
+        assert (valueFoundBinaryCaseA == searchValue);
+
+        // CASE B - Variable not found
+        searchValue = -12;
+        System.out.println("\nValue Being Searched For Case B: " + searchValue);
+        int valueFoundBinaryCaseB = ArrayHelper.binarySearch(randomNumberArray, searchValue);
+
+        assert (valueFoundBinaryCaseB == -1);
+
+        System.out.println("TEST CASE #1B (Variable is not in array). RESULTS - passed");
+        System.out.println("Value Found in Binary Search Case B: " + valueFoundBinaryCaseB);
     }
 }

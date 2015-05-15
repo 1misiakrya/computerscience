@@ -48,6 +48,7 @@ public class ArrayHelper {
         int swaps = 0;
         int dataWhenHighestValue;
 
+        // SELECTION SORT
         for (int pass = 0; pass < data.length - 1; pass++) {
             dataWhenHighestValue = 0;
             for (int i = 0; i < data.length - pass; i++) {
@@ -64,12 +65,15 @@ public class ArrayHelper {
 
     public static void swap(int[] data, int i, int j) {
 
+        // SWAPPING ONE VARIABLE IN AN ARRAY FOR ANOTHER
         int temp = data[i];
         data[i] = data[j];
         data[j] = temp;
     }
 
     public static void displayArray(int[] data) {
+        
+        // PRINTING AN ARRAY
         for (int i = 0; i < data.length; i++) {
             System.out.print(data[i] + " ");
         }
@@ -78,12 +82,13 @@ public class ArrayHelper {
 
     public static int linearSearch(int[] data, int searchValue) {
 
+        // SEARCHING FOR A VALUE USING LINEAR SEARCH
         int valueOfArrayAtSearchValue = -1;
         for (int i = 0; i < data.length; i++) {
             if (data[i] == searchValue) {
                 valueOfArrayAtSearchValue = data[i];
             }
-            if (i == data.length && data[i] != searchValue) {
+            if ((i == data.length) && (data[i] != searchValue)) {
                 System.out.println("Value not found in the array.");
             }
         }
@@ -92,6 +97,7 @@ public class ArrayHelper {
 
     public static int min(int[] data) {
 
+        // FINDING THE SMALLEST VALUE IN AN ARRAY
         int min = data[0];
         for (int i = 0; i < data.length; i++) {
             if (min > data[i]) {
@@ -103,6 +109,7 @@ public class ArrayHelper {
 
     public static int sum(int[] data) {
 
+        // FINDING THE SUM OF ALL VALUES IN AN ARRAY
         int sum = 0;
         for (int i = 0; i < data.length; i++) {
             sum = sum + data[i];
@@ -112,6 +119,7 @@ public class ArrayHelper {
 
     public static int average(int[] data) {
 
+        // FINDING THE AVERAGE OF THE VALUES IN THE ARRAY
         int sum = 0;
         int averageValue;
         for (int i = 0; i < data.length; i++) {
@@ -123,28 +131,43 @@ public class ArrayHelper {
 
     public static int binarySearch(int[] data, int searchValue) {
 
+        // SEARCHING FOR A VALUE IN AN ARRAY USING BINARY SEARCH
+        
+        // DECLARING VARIABLES
         int rightSide = data.length;
         int leftSide = 0;
         int middle = data.length / 2;
         boolean valueFound = false;
+        int passCount = 0;
 
         int valueOfArrayAtSearchValue = -1;
 
+        // SHORTENING THE SEARCH AREA WITH EACH PASS UNTIL THE MIDDLE IS (OR ISN'T) THE SEARCH VALUE
         while (valueFound == false) {
-            if (leftSide == rightSide) {
-                valueOfArrayAtSearchValue = -1;
+            if (passCount == data.length) {
                 valueFound = true;
+            } else {
+                if (data[middle] == searchValue) {
+                    valueOfArrayAtSearchValue = data[middle];
+                    valueFound = true;
+                } else if (data[middle] < searchValue) {
+                    leftSide = middle;
+                    middle = data[data.length - (data.length - leftSide) / 2];
+                } else if (data[middle] > searchValue) {
+                    rightSide = middle;
+                    middle = data[data.length - rightSide - (data.length - rightSide) / 2];
+                }
+                if (leftSide == rightSide) {
+                    middle = leftSide;
+                    if (data[middle] == searchValue) {
+                        valueOfArrayAtSearchValue = data[middle];
+                    } else {
+                        valueOfArrayAtSearchValue = -1;
+                    }
+                    valueFound = true;
+                }
             }
-            if (data[middle] == searchValue) {
-                valueOfArrayAtSearchValue = data[middle];
-                valueFound = true;
-            } else if (data[middle] < searchValue) {
-                leftSide = middle;
-                middle = data[data.length - (data.length - leftSide) / 2];
-            } else if (data[middle] > searchValue) {
-                rightSide = middle;
-                middle = data[data.length - rightSide - (data.length - rightSide) / 2];
-            }
+            passCount = passCount + 1;
         }
         return valueOfArrayAtSearchValue;
     }
