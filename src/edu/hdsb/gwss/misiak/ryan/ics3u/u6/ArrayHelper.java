@@ -24,6 +24,44 @@ public class ArrayHelper {
         return max;
     }
 
+    public static void bubbleSort(int[] data) {
+
+        int comparisons = 0;
+        int swaps = 0;
+
+        // BUBBLE SORT
+        for (int pass = 0; pass < data.length; pass++) {
+            for (int i = 0; i < data.length - 1; i++) {
+                if (data[i] > data[i + 1]) {
+                    ArrayHelper.swap(data, i, i + 1);
+                    swaps++;
+                }
+                comparisons++;
+            }
+
+        }
+    }
+
+    public static void selectionSort(int[] data) {
+
+        int comparisons = 0;
+        int swaps = 0;
+        int dataWhenHighestValue;
+
+        for (int pass = 0; pass < data.length - 1; pass++) {
+            dataWhenHighestValue = 0;
+            for (int i = 0; i < data.length - pass; i++) {
+                if (data[i] > data[dataWhenHighestValue]) {
+                    dataWhenHighestValue = i;
+                }
+                comparisons++;
+            }
+            ArrayHelper.swap(data, data.length - pass - 1, dataWhenHighestValue);
+            swaps++;
+
+        }
+    }
+
     public static void swap(int[] data, int i, int j) {
 
         int temp = data[i];
@@ -86,26 +124,26 @@ public class ArrayHelper {
     public static int binarySearch(int[] data, int searchValue) {
 
         int rightSide = data.length;
-        int leftSide = data[0];
+        int leftSide = 0;
         int middle = data.length / 2;
         boolean valueFound = false;
 
         int valueOfArrayAtSearchValue = -1;
 
         while (valueFound == false) {
+            if (leftSide == rightSide) {
+                valueOfArrayAtSearchValue = -1;
+                valueFound = true;
+            }
             if (data[middle] == searchValue) {
                 valueOfArrayAtSearchValue = data[middle];
                 valueFound = true;
             } else if (data[middle] < searchValue) {
                 leftSide = middle;
                 middle = data[data.length - (data.length - leftSide) / 2];
-            } else if (data[middle] < searchValue) {
+            } else if (data[middle] > searchValue) {
                 rightSide = middle;
                 middle = data[data.length - rightSide - (data.length - rightSide) / 2];
-            }
-            if (leftSide == rightSide) {
-                valueOfArrayAtSearchValue = -1;
-                valueFound = true;
             }
         }
         return valueOfArrayAtSearchValue;
