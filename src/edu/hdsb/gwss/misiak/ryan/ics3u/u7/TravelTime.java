@@ -30,12 +30,13 @@ public class TravelTime {
 
         String[] time = new String[10];
         int[] timeDifference = new int[10];
-        int hours = 0;
+        int hours[] = new int [10];
         int changeInHours = 0;
-        int minutes = 0;
-        int seconds = 0;
-        int[] timeTaken = new int[10];
+        int minutes[] = new int [4];
+        int seconds[] = new int [4];
+        int[] timeTaken = new int[4];
         int i = 0;
+        int j = 0;
 
         while (input.hasNext()) {
             a = input.nextLine();
@@ -45,14 +46,16 @@ public class TravelTime {
             timeTaken[i] = Integer.parseInt(cutSpaces.nextToken());
             System.out.println(a);
             while (cutSpaces.hasMoreTokens()) {
-                b = time[i];
+                b = time[j];
                 cutColons = new StringTokenizer(b, ":");
-                hours = Integer.parseInt(cutColons.nextToken());
-                minutes = Integer.parseInt(cutColons.nextToken());
-                seconds = Integer.parseInt(cutColons.nextToken());
+                hours[j] = Integer.parseInt(cutColons.nextToken());
+                minutes[j] = Integer.parseInt(cutColons.nextToken());
+                seconds[j] = Integer.parseInt(cutColons.nextToken());
+                changeInHours = hours[j] + timeDifference[i] + timeTaken[i];
+                System.out.println(changeInHours + ":" + minutes[j] + ":" + seconds[j]);
+                j++;
             }
-            changeInHours = hours + timeDifference[i] + timeTaken[i];
-            System.out.println(hours+ ":" + minutes + ":" + seconds);
+            
             i++;
         }
     }
