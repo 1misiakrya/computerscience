@@ -24,39 +24,42 @@ public class TravelTime {
     public static void main(String[] args) throws FileNotFoundException {
 
         Scanner input = new Scanner(new File("Data1.txt"));
-        StringTokenizer cutColons, cutSpaces;
+        StringTokenizer st;
         String a;
         String b;
 
-        String[] time = new String[10];
-        int[] timeDifference = new int[10];
-        int hours[] = new int [10];
-        int changeInHours = 0;
-        int minutes[] = new int [4];
-        int seconds[] = new int [4];
-        int[] timeTaken = new int[4];
-        int i = 0;
-        int j = 0;
+        String time;
+        int timeDifference;
+        int hours;
+        int minutes;
+        int seconds;
+        int timeTaken;
 
         while (input.hasNext()) {
             a = input.nextLine();
-            cutSpaces = new StringTokenizer(a, " ");
-            time[i] = cutSpaces.nextToken();
-            timeDifference[i] = Integer.parseInt(cutSpaces.nextToken());
-            timeTaken[i] = Integer.parseInt(cutSpaces.nextToken());
+            st = new StringTokenizer(a, " ");
+            time = st.nextToken();
+            timeTaken = Integer.parseInt(st.nextToken());
+            timeDifference = Integer.parseInt(st.nextToken());
+
+            // CUT THE TIME
+            st = new StringTokenizer(time, ":");
+            hours = Integer.parseInt(st.nextToken());
+            minutes = Integer.parseInt(st.nextToken());
+            seconds = Integer.parseInt(st.nextToken());
+
             System.out.println(a);
-            while (cutSpaces.hasMoreTokens()) {
-                b = time[j];
-                cutColons = new StringTokenizer(b, ":");
-                hours[j] = Integer.parseInt(cutColons.nextToken());
-                minutes[j] = Integer.parseInt(cutColons.nextToken());
-                seconds[j] = Integer.parseInt(cutColons.nextToken());
-                changeInHours = hours[j] + timeDifference[i] + timeTaken[i];
-                System.out.println(changeInHours + ":" + minutes[j] + ":" + seconds[j]);
-                j++;
+            if (hours >= 24) {
+                hours = hours - 24;
             }
-            
-            i++;
+            if (timeDifference < 0) {
+                hours = hours + timeTaken - timeDifference;
+            } else{
+                hours = hours + timeTaken + timeDifference;
+            }
+
+            System.out.println(hours + ":" + minutes + ":" + seconds);
+
         }
     }
 }
