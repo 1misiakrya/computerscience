@@ -7,6 +7,8 @@
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u7;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -122,9 +124,9 @@ public class CourseData extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
 
-        Element course = new Element("course");
-        Document courseData = new Document(course);
-
+        Element course = new Element(ELEMENT_COURSE);
+        
+        
         Element code = new Element(ELEMENT_CODE);
         code.appendChild(codeField.getText());
         Element description = new Element(ELEMENT_DESC);
@@ -138,12 +140,21 @@ public class CourseData extends javax.swing.JFrame {
         course.appendChild(description);
         course.appendChild(teacher);
         course.appendChild(schoolBoard);
-
+        courses.appendChild(course);
         try {
             Serializer a = new Serializer(System.out);
             a.setIndent(4);
             a.setMaxLength(64);
             a.write(courseData);
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+
+        try {
+            FileWriter output = new FileWriter("course");
+            BufferedWriter writer = new BufferedWriter(output);
+            writer.write(courses.toXML());
+            writer.close();
         } catch (IOException ex) {
             System.err.println(ex);
         }
@@ -184,11 +195,14 @@ public class CourseData extends javax.swing.JFrame {
         });
     }
 
+    static final String ELEMENT_COURSES = "courses";
     static final String ELEMENT_COURSE = "course";
     static final String ELEMENT_DESC = "description";
     static final String ELEMENT_CODE = "code";
     static final String ELEMENT_TEACHER = "teacher";
     static final String ELEMENT_SCHOOL_BOARD = "schoolBoard";
+    Element courses = new Element(ELEMENT_COURSES);
+    Document courseData = new Document(courses);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
