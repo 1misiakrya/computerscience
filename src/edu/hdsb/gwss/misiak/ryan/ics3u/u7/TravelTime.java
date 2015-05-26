@@ -3,7 +3,8 @@
  * Date: May 20, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Description: This program
+ * Description: This program reads from a file and tells the user how long it
+would take to take a trip from one spot to another.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u7;
 

@@ -3,7 +3,7 @@
  * Date: May 22, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Description: This program
+ * Description: This program lists the course data for an inputed course.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u7;
 

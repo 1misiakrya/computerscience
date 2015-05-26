@@ -3,9 +3,16 @@
  * Date: May 22, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
- * Description: This program
+ * Description: This program lists friends from a file.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u7;
+
+import java.io.File;
+import javax.swing.DefaultComboBoxModel;
+import nu.xom.Builder;
+import nu.xom.Document;
+import nu.xom.Element;
+import nu.xom.Elements;
 
 /**
  *
@@ -29,21 +36,135 @@ public class Friends extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        importButton = new javax.swing.JButton();
+        friendsLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        phoneLabel = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
+        nameField = new javax.swing.JTextField();
+        phoneField = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
+        friendsBox = new javax.swing.JComboBox();
+        addressField = new javax.swing.JTextField();
+        addressLabel = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        importButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        importButton.setText("Import");
+        importButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importButtonActionPerformed(evt);
+            }
+        });
+
+        friendsLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        friendsLabel.setText("Friends Database");
+
+        nameLabel.setText("Name:");
+
+        phoneLabel.setText("Phone:");
+
+        emailLabel.setText("Email:");
+
+        friendsBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                friendsBoxActionPerformed(evt);
+            }
+        });
+
+        addressLabel.setText("Address:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(phoneLabel)
+                                .addComponent(emailLabel)
+                                .addComponent(nameLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(addressLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(phoneField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailField)
+                            .addComponent(addressField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(importButton, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                            .addComponent(friendsBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 99, Short.MAX_VALUE)
+                .addComponent(friendsLabel)
+                .addGap(70, 70, 70))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(friendsLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(friendsBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneLabel)
+                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLabel)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
+
+        File file = new File("Friends.xml");
+
+        Builder builder = new Builder();
+        Document friendsDocument;
+        Element friendsRoot;
+
+        try {
+            friendsDocument = builder.build(file);
+            friendsRoot = friendsDocument.getRootElement();
+            Elements friends = friendsRoot.getChildElements();
+            DefaultComboBoxModel model = new DefaultComboBoxModel();
+            
+            for (int i = 0; i < friends.size(); i++) {
+                model.addElement(friends.get(i).getFirstChildElement("name").getValue());
+            }
+            friendsBox.setModel(  model  );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_importButtonActionPerformed
+
+    private void friendsBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_friendsBoxActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_friendsBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +202,16 @@ public class Friends extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addressField;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JComboBox friendsBox;
+    private javax.swing.JLabel friendsLabel;
+    private javax.swing.JButton importButton;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField phoneField;
+    private javax.swing.JLabel phoneLabel;
     // End of variables declaration//GEN-END:variables
 }
