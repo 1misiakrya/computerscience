@@ -1,6 +1,6 @@
 /*
  * Name: Friends
- * Date: May 22, 2015
+ * Date: May 26, 2015
  * Version: v0.1
  * Author: Mr. R. Misiak
  * Description: This program lists friends from a file.

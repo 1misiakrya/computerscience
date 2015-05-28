@@ -1,9 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: SoccerTeamsViewer
+ * Date: May 27, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program lists friends from a file.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u7;
+
+import java.io.File;
+import javax.swing.DefaultComboBoxModel;
+import nu.xom.Builder;
+import nu.xom.Document;
+import nu.xom.Element;
+import nu.xom.Elements;
 
 /**
  *
@@ -27,21 +36,60 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        importButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        importButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        importButton.setText("Import");
+        importButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(importButton)
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
+        
+        File file = new File("Soccer Teams.xml");
+
+        Builder builder = new Builder();
+        Document teamsDocument;
+        Element teamsRoot;
+
+        try {
+            teamsDocument = builder.build(file);
+            teamsRoot = teamsDocument.getRootElement();
+            Elements teams = teamsRoot.getChildElements();
+            DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+            for (int i = 0; i < teams.size(); i++) {
+                model.addElement(teams.get(i).getFirstChildElement("name").getValue());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_importButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +127,6 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton importButton;
     // End of variables declaration//GEN-END:variables
 }

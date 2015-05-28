@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: AnimalSearch
+ * Date: May 27, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program lists friends from a file.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u7;
 

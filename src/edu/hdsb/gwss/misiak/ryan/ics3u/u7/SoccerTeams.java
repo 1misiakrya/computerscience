@@ -1,9 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Name: SoccerTeams
+ * Date: May 27, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program lists friends from a file.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.u7;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import nu.xom.Document;
+import nu.xom.Element;
+import nu.xom.Serializer;
 
 /**
  *
@@ -46,9 +55,21 @@ public class SoccerTeams extends javax.swing.JFrame {
 
         addToTeamsButton.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         addToTeamsButton.setText("Add To Teams");
+        addToTeamsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addToTeamsButtonActionPerformed(evt);
+            }
+        });
 
         leagueLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         leagueLabel.setText("League:");
+
+        leagueBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Premier League", "La Liga", "Bundesliga", "MLS", "Ligue 1", "Serie A" }));
+        leagueBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leagueBoxActionPerformed(evt);
+            }
+        });
 
         numberOfPlayersLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         numberOfPlayersLabel.setText("Number Of Players:");
@@ -71,11 +92,11 @@ public class SoccerTeams extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(teamField, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(addToTeamsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(leagueBox, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numberOfPlayersSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(leagueBox, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numberOfPlayersSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(addToTeamsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,17 +112,56 @@ public class SoccerTeams extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(leagueLabel)
                     .addComponent(leagueBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numberOfPlayersSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numberOfPlayersLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                    .addComponent(numberOfPlayersLabel)
+                    .addComponent(numberOfPlayersSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(addToTeamsButton)
-                .addGap(26, 26, 26))
+                .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addToTeamsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToTeamsButtonActionPerformed
+
+        Element team = new Element(ELEMENT_TEAMS);
+
+        Element teamName = new Element(ELEMENT_TEAM);
+        teamName.appendChild(teamField.getText());
+        Element league = new Element(ELEMENT_LEAGUE);
+        league.appendChild("" + leagueBox.getSelectedItem());
+        Element players = new Element(ELEMENT_PLAYERS);
+        players.appendChild("" + numberOfPlayersSpinner.getValue());
+
+        team.appendChild(teamName);
+        team.appendChild(league);
+        team.appendChild(players);
+        teams.appendChild(team);
+
+        try {
+            Serializer a = new Serializer(System.out);
+            a.setIndent(4);
+            a.setMaxLength(64);
+            a.write(teamData);
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+
+        try {
+            FileWriter output = new FileWriter("team");
+            BufferedWriter writer = new BufferedWriter(output);
+            writer.write(teams.toXML());
+            writer.close();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+    }//GEN-LAST:event_addToTeamsButtonActionPerformed
+
+    private void leagueBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leagueBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_leagueBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +197,13 @@ public class SoccerTeams extends javax.swing.JFrame {
             }
         });
     }
+
+    static final String ELEMENT_TEAMS = "team";
+    static final String ELEMENT_TEAM = "teamName";
+    static final String ELEMENT_LEAGUE = "league";
+    static final String ELEMENT_PLAYERS = "players";
+    Element teams = new Element(ELEMENT_TEAMS);
+    Document teamData = new Document(teams);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton addToTeamsButton;
