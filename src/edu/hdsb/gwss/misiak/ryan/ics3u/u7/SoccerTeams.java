@@ -44,6 +44,8 @@ public class SoccerTeams extends javax.swing.JFrame {
         leagueBox = new javax.swing.JComboBox();
         numberOfPlayersSpinner = new javax.swing.JSpinner();
         numberOfPlayersLabel = new javax.swing.JLabel();
+        ticketCostLabel = new javax.swing.JLabel();
+        ticketField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +76,9 @@ public class SoccerTeams extends javax.swing.JFrame {
         numberOfPlayersLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         numberOfPlayersLabel.setText("Number Of Players:");
 
+        ticketCostLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ticketCostLabel.setText("Ticket Cost ($XX.XX)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,19 +89,25 @@ public class SoccerTeams extends javax.swing.JFrame {
                         .addGap(81, 81, 81)
                         .addComponent(titleLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(numberOfPlayersLabel)
-                            .addComponent(teamLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(leagueLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(teamField, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(leagueBox, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(numberOfPlayersSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(addToTeamsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(addToTeamsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ticketCostLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ticketField, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(numberOfPlayersLabel)
+                                    .addComponent(teamLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(leagueLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(teamField, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(leagueBox, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(numberOfPlayersSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -116,7 +127,11 @@ public class SoccerTeams extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numberOfPlayersLabel)
                     .addComponent(numberOfPlayersSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ticketCostLabel)
+                    .addComponent(ticketField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(addToTeamsButton)
                 .addGap(28, 28, 28))
         );
@@ -134,10 +149,13 @@ public class SoccerTeams extends javax.swing.JFrame {
         league.appendChild("" + leagueBox.getSelectedItem());
         Element players = new Element(ELEMENT_PLAYERS);
         players.appendChild("" + numberOfPlayersSpinner.getValue());
+        Element ticketCost = new Element(ELEMENT_TICKET_COST);
+        ticketCost.appendChild(ticketField.getText());
 
         team.appendChild(teamName);
         team.appendChild(league);
         team.appendChild(players);
+        team.appendChild(ticketCost);
         teams.appendChild(team);
 
         try {
@@ -202,6 +220,7 @@ public class SoccerTeams extends javax.swing.JFrame {
     static final String ELEMENT_TEAM = "teamName";
     static final String ELEMENT_LEAGUE = "league";
     static final String ELEMENT_PLAYERS = "players";
+    static final String ELEMENT_TICKET_COST = "ticketCost";
     Element teams = new Element(ELEMENT_TEAMS);
     Document teamData = new Document(teams);
 
@@ -213,6 +232,8 @@ public class SoccerTeams extends javax.swing.JFrame {
     private javax.swing.JSpinner numberOfPlayersSpinner;
     private javax.swing.JTextField teamField;
     private javax.swing.JLabel teamLabel;
+    private javax.swing.JLabel ticketCostLabel;
+    private javax.swing.JTextField ticketField;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
