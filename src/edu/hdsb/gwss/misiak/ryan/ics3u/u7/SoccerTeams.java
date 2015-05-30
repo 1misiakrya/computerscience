@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import nu.xom.Document;
 import nu.xom.Element;
+import nu.xom.Elements;
 import nu.xom.Serializer;
 
 /**
@@ -141,8 +142,7 @@ public class SoccerTeams extends javax.swing.JFrame {
 
     private void addToTeamsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToTeamsButtonActionPerformed
 
-        Element team = new Element(ELEMENT_TEAMS);
-
+        //Creating the elements and sub-elements.
         Element teamName = new Element(ELEMENT_TEAM);
         teamName.appendChild(teamField.getText());
         Element league = new Element(ELEMENT_LEAGUE);
@@ -152,12 +152,36 @@ public class SoccerTeams extends javax.swing.JFrame {
         Element ticketCost = new Element(ELEMENT_TICKET_COST);
         ticketCost.appendChild(ticketField.getText());
 
-        team.appendChild(teamName);
-        team.appendChild(league);
-        team.appendChild(players);
-        team.appendChild(ticketCost);
-        teams.appendChild(team);
+        //Appending the children to the main element.
+        league.appendChild(teamName);
+        teamName.appendChild(players);
+        teamName.appendChild(ticketCost);
+        teams.appendChild(league);
 
+        Element teamsRoot;
+
+        boolean fileFound = false;
+
+        // Checking to see if the element exists.
+        try {
+            teamsRoot = teamData.getRootElement();
+            Elements team = teamsRoot.getChildElements();
+            for (int i = 0; i < team.size(); i++) {
+                if (team.get(i).getFirstChildElement("teams").getValue().equals("1956")) {
+                    fileFound = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        //foundFile(teamData.getRootElement());
+
+        if (!fileFound) {
+            Element team = new Element("team");
+        }
+
+        //Writing the information to the window for the user to view.
         try {
             Serializer a = new Serializer(System.out);
             a.setIndent(4);
@@ -167,6 +191,7 @@ public class SoccerTeams extends javax.swing.JFrame {
             System.err.println(ex);
         }
 
+        //Writing the information to the file.
         try {
             FileWriter output = new FileWriter("team");
             BufferedWriter writer = new BufferedWriter(output);
@@ -175,8 +200,26 @@ public class SoccerTeams extends javax.swing.JFrame {
         } catch (IOException ex) {
             System.err.println(ex);
         }
-    }//GEN-LAST:event_addToTeamsButtonActionPerformed
 
+
+    }//GEN-LAST:event_addToTeamsButtonActionPerformed
+    public static int foundFile(Element teamsRoot) {
+        
+        // Checking to see if the element exists.
+        int x = 0;
+        try {
+            Elements team = teamsRoot.getChildElements();
+            for (int i = 0; i < team.size(); i++) {
+                if (team.get(i).getFirstChildElement("teams").getValue().equals("1956")) {
+                    x = 1;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return x;
+    }
     private void leagueBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leagueBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_leagueBoxActionPerformed
@@ -221,6 +264,7 @@ public class SoccerTeams extends javax.swing.JFrame {
     static final String ELEMENT_LEAGUE = "league";
     static final String ELEMENT_PLAYERS = "players";
     static final String ELEMENT_TICKET_COST = "ticketCost";
+
     Element teams = new Element(ELEMENT_TEAMS);
     Document teamData = new Document(teams);
 
