@@ -8,8 +8,10 @@
 package edu.hdsb.gwss.misiak.ryan.ics3u.u7;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Serializer;
@@ -141,62 +143,68 @@ public class SoccerTeams extends javax.swing.JFrame {
 
     private void addToTeamsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToTeamsButtonActionPerformed
 
-        //Creating the elements and sub-elements.
-        Element teamName = new Element(ELEMENT_TEAM_NAME);
-        teamName.appendChild(teamField.getText());
-        Element league = new Element(ELEMENT_LEAGUE);
-        league.appendChild("" + leagueBox.getSelectedItem());
-        Element players = new Element(ELEMENT_PLAYERS);
-        players.appendChild("" + numberOfPlayersSpinner.getValue());
-        Element ticketCost = new Element(ELEMENT_TICKET_COST);
-        ticketCost.appendChild(ticketField.getText());
-
-        //Appending the children to the main element.
-        league.appendChild(teamName);
-        teamName.appendChild(players);
-        teamName.appendChild(ticketCost);
-        teams.appendChild(league);
-
         boolean fileFound = false;
 
         // Checking to see if the elements exist.
-        for (int i = 0; i < teams.getChildElements().size(); i++) {
-            if (teams.getChildElements().get(i).getFirstChildElement("Name").getValue().equals("team")) {
-                fileFound = true;
+        if (x == 0) {
+            for (int i = 0; i < rootTeams.getChildElements().size(); i++) {
+                if (rootTeams.getChildElements().get(i).getFirstChildElement("team").getValue().equals("league")) {
+                    fileFound = true;
+                }
             }
-
-            if (!fileFound) {
-                Element teamElement = new Element(ELEMENT_TEAMS);
-                Element teamNames = new Element(ELEMENT_TEAM_NAME);
-                teamNames.appendChild(players);
-                teamNames.appendChild(ticketCost);
-                league.appendChild(teamNames);
-                teamData.appendChild(teamElement);
-            }
-
-            fileFound = false;
-
-            //Writing the information to the window for the user to view.
-            try {
-                Serializer a = new Serializer(System.out);
-                a.setIndent(4);
-                a.setMaxLength(64);
-                a.write(teamData);
-            } catch (IOException ex) {
-                System.err.println(ex);
-            }
-
-            //Writing the information to the file.
-            try {
-                FileWriter output = new FileWriter("team");
-                BufferedWriter writer = new BufferedWriter(output);
-                writer.write(teams.toXML());
-                writer.close();
-            } catch (IOException ex) {
-                System.err.println(ex);
-            }
-
         }
+
+        x = x + 1;
+
+        if (!fileFound) {
+
+            //Creating the elements and sub-elements.
+            Element team = new Element(ELEMENT_TEAM_NAME);
+
+            Element league = new Element(ELEMENT_LEAGUE);
+
+            Element players = new Element(ELEMENT_PLAYERS);
+            players.appendChild("" + numberOfPlayersSpinner.getValue());
+            Element ticketCost = new Element(ELEMENT_TICKET_COST);
+            ticketCost.appendChild(ticketField.getText());
+            Element leagueName = new Element(ELEMENT_LEAGUE_NAME);
+            leagueName.appendChild("" + leagueBox.getSelectedItem());
+            Element teamName = new Element(ELEMENT_NAME);
+            teamName.appendChild(teamField.getText());
+            Element teamInfo = new Element("info");
+
+            //Appending the children to the main element.
+            league.appendChild(leagueName);
+            leagueName.appendChild(teamName);
+            teamName.appendChild(team);
+            team.appendChild(teamInfo);
+            teamInfo.appendChild(players);
+            teamInfo.appendChild(ticketCost);
+            rootTeams.appendChild(league);
+        }
+
+        fileFound = false;
+
+        //Writing the information to the window for the user to view.
+        try {
+            Serializer a = new Serializer(System.out);
+            a.setIndent(4);
+            a.setMaxLength(64);
+            a.write(teamData);
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+
+        //Writing the information to the file.
+        try {
+            FileWriter output = new FileWriter("team.xml");
+            BufferedWriter writer = new BufferedWriter(output);
+            writer.write(rootTeams.toXML());
+            writer.close();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+
     }//GEN-LAST:event_addToTeamsButtonActionPerformed
 
     private void leagueBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leagueBoxActionPerformed
@@ -217,16 +225,21 @@ public class SoccerTeams extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SoccerTeams.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SoccerTeams.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SoccerTeams.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SoccerTeams.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SoccerTeams.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SoccerTeams.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SoccerTeams.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SoccerTeams.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -243,9 +256,12 @@ public class SoccerTeams extends javax.swing.JFrame {
     static final String ELEMENT_LEAGUE = "league";
     static final String ELEMENT_PLAYERS = "players";
     static final String ELEMENT_TICKET_COST = "ticketCost";
+    static final String ELEMENT_NAME = "name";
+    static final String ELEMENT_LEAGUE_NAME = "leagueName";
+    int x = 0;
 
-    Element teams = new Element(ELEMENT_TEAMS);
-    Document teamData = new Document(teams);
+    Element rootTeams = new Element(ELEMENT_TEAMS);
+    Document teamData = new Document(rootTeams);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton addToTeamsButton;
