@@ -8,7 +8,6 @@
 package edu.hdsb.gwss.misiak.ryan.ics3u.u7;
 
 import java.io.File;
-import javax.swing.DefaultComboBoxModel;
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -47,7 +46,7 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
         bundesligaLabel = new javax.swing.JLabel();
         mLSLabel = new javax.swing.JLabel();
         ligue1Label = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        returnButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         premierLeagueField = new javax.swing.JTextField();
         serieAField = new javax.swing.JTextField();
@@ -78,10 +77,10 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
 
         ligue1Label.setText("Ligue 1:");
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        returnButton.setText("Click to Return");
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                returnButtonActionPerformed(evt);
             }
         });
 
@@ -106,7 +105,7 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(returnButton)
                 .addGap(79, 79, 79))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,9 +131,11 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
                                     .addComponent(serieAField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(laLigaLabel)
                             .addComponent(laLigaField)
-                            .addComponent(ligue1Field, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                            .addComponent(ligue1Field, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(laLigaLabel))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(bundesligaLabel)
@@ -182,7 +183,7 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
                         .addGap(243, 243, 243)
                         .addComponent(bundesligaField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(9, 9, 9)
-                .addComponent(jButton1))
+                .addComponent(returnButton))
         );
 
         pack();
@@ -200,40 +201,30 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
             teamsDocument = builder.build(file);
             teamsRoot = teamsDocument.getRootElement();
             Elements teams = teamsRoot.getChildElements();
-            DefaultComboBoxModel model = new DefaultComboBoxModel();
-
-            
-            for (int i = 0; i < teams.size(); i++) {
-                model.addElement(teams.get(i).getFirstChildElement("name").getValue());
-            }
 
             for (int i = 0; i < teams.size(); i++) {
-                if (teams.get(i).getFirstChildElement("league").getValue().equals("Premier League")) {
-                    premierLeagueField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-                    System.out.println(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-
-                } else if (teams.get(i).getFirstChildElement("league").getValue().equals("Serie A")) {
-                    serieAField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-                    System.out.println(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-
-                } else if (teams.get(i).getFirstChildElement("league").getValue().equals("La Liga")) {
-                    laLigaField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-                    System.out.println(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-
-                } else if (teams.get(i).getFirstChildElement("league").getValue().equals("Bundesliga")) {
-                    bundesligaField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-                    System.out.println(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-
-                } else if (teams.get(i).getFirstChildElement("league").getValue().equals("MLS")) {
-                    mLSField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-                    System.out.println(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-
-                } else if (teams.get(i).getFirstChildElement("league").getValue().equals("Ligue 1")) {
-                    ligue1Field.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-                    System.out.println(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
-
-                } else {
-                    System.out.println("ERROR - Invalid League");
+                switch (teams.get(i).getFirstChildElement("leagueName").getValue()) {
+                    case "Premier League":
+                        premierLeagueField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        break;
+                    case "Serie A":
+                        serieAField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        break;
+                    case "La Liga":
+                        laLigaField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        break;
+                    case "Bundesliga":
+                        bundesligaField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        break;
+                    case "MLS":
+                        mLSField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        break;
+                    case "Ligue 1":
+                        ligue1Field.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        break;
+                    default:
+                        System.out.println("ERROR - Invalid League");
+                        break;
                 }
             }
 
@@ -241,15 +232,14 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-
     }//GEN-LAST:event_importButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
 
         new SoccerTeams().setVisible(true);
         this.setVisible(false);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_returnButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,7 +280,6 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
     private javax.swing.JTextField bundesligaField;
     private javax.swing.JLabel bundesligaLabel;
     private javax.swing.JButton importButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JTextField laLigaField;
     private javax.swing.JLabel laLigaLabel;
     private javax.swing.JTextField ligue1Field;
@@ -299,6 +288,7 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
     private javax.swing.JLabel mLSLabel;
     private javax.swing.JTextField premierLeagueField;
     private javax.swing.JLabel premierLeagueLabel;
+    private javax.swing.JButton returnButton;
     private javax.swing.JTextField serieAField;
     private javax.swing.JLabel serieALabel;
     private javax.swing.JLabel titleLabel;

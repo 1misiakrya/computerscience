@@ -125,8 +125,7 @@ public class CourseData extends javax.swing.JFrame {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
 
         Element course = new Element(ELEMENT_COURSE);
-        
-        
+
         Element code = new Element(ELEMENT_CODE);
         code.appendChild(codeField.getText());
         Element description = new Element(ELEMENT_DESC);

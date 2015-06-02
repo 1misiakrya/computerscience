@@ -193,15 +193,11 @@ public class SoccerTeams extends javax.swing.JFrame {
 
             //Appending the children to the main element.
             league.appendChild(leagueName);
-            leagueName.appendChild(teamsInLeague);
-            teamsInLeague.appendChild(teamName);
-            teamName.appendChild(teamInfo);
-            teamInfo.appendChild(players);
-            teamInfo.appendChild(ticketCost);
+            league.appendChild(teamName);
+            league.appendChild(players);
+            league.appendChild(ticketCost);
             rootTeams.appendChild(league);
         }
-
-        fileFound = false;
 
         //Writing the information to the window for the user to view.
         try {
@@ -228,6 +224,7 @@ public class SoccerTeams extends javax.swing.JFrame {
         }
         this.child.setVisible(true);
         this.setVisible(false);
+
 
     }//GEN-LAST:event_addToTeamsButtonActionPerformed
 
