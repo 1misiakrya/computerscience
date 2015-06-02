@@ -69,6 +69,7 @@ public class SoccerTeams extends javax.swing.JFrame {
         numberOfPlayersLabel = new javax.swing.JLabel();
         ticketCostLabel = new javax.swing.JLabel();
         ticketField = new javax.swing.JTextField();
+        finishedButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,6 +103,14 @@ public class SoccerTeams extends javax.swing.JFrame {
         ticketCostLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ticketCostLabel.setText("Ticket Cost ($XX.XX)");
 
+        finishedButton.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        finishedButton.setText("Finished");
+        finishedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finishedButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,9 +120,6 @@ public class SoccerTeams extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(titleLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(addToTeamsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -130,7 +136,12 @@ public class SoccerTeams extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(teamField, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(leagueBox, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(numberOfPlayersSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(numberOfPlayersSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(finishedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addToTeamsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -154,17 +165,17 @@ public class SoccerTeams extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ticketCostLabel)
                     .addComponent(ticketField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(addToTeamsButton)
-                .addGap(28, 28, 28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(finishedButton)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void addToTeamsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToTeamsButtonActionPerformed
-
-        boolean fileFound = false;
 
         // Checking to see if the elements exist.
         for (int i = 0; i < rootTeams.getChildElements().size(); i++) {
@@ -175,11 +186,8 @@ public class SoccerTeams extends javax.swing.JFrame {
 
         if (!fileFound) {
 
-            //Creating the elements and sub-elements.
-            Element team = new Element(ELEMENT_TEAM_NAME);
-
+            //Creating the Elements.
             Element league = new Element(ELEMENT_LEAGUE);
-            Element teamsInLeague = new Element(ELEMENT_TEAMS_IN_LEAGUE);
 
             Element players = new Element(ELEMENT_PLAYERS);
             players.appendChild("" + numberOfPlayersSpinner.getValue());
@@ -189,7 +197,6 @@ public class SoccerTeams extends javax.swing.JFrame {
             leagueName.appendChild("" + leagueBox.getSelectedItem());
             Element teamName = new Element(ELEMENT_TEAM_NAME);
             teamName.appendChild(teamField.getText());
-            Element teamInfo = new Element("info");
 
             //Appending the children to the main element.
             league.appendChild(leagueName);
@@ -219,18 +226,21 @@ public class SoccerTeams extends javax.swing.JFrame {
             System.err.println(ex);
         }
 
-        if (child == null) {
-            this.child = new SoccerTeamsViewer(this);
-        }
-        this.child.setVisible(true);
-        this.setVisible(false);
-
 
     }//GEN-LAST:event_addToTeamsButtonActionPerformed
 
     private void leagueBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leagueBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_leagueBoxActionPerformed
+
+    private void finishedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishedButtonActionPerformed
+        
+        if (child == null) {
+            this.child = new SoccerTeamsViewer(this);
+        }
+        this.child.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_finishedButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,20 +282,23 @@ public class SoccerTeams extends javax.swing.JFrame {
         });
     }
 
+    //Strings that are being used to name the elements.
     static final String ELEMENT_TEAM = "team";
     static final String ELEMENT_TEAM_NAME = "teamName";
     static final String ELEMENT_LEAGUE = "league";
     static final String ELEMENT_PLAYERS = "players";
     static final String ELEMENT_TICKET_COST = "ticketCost";
-    static final String ELEMENT_NAME = "name";
     static final String ELEMENT_LEAGUE_NAME = "leagueName";
-    static final String ELEMENT_TEAMS_IN_LEAGUE = "teamsInLeague";
+
+    //Boolean that, if true, will prevent the file from being re-written.
+    boolean fileFound = false;
 
     Element rootTeams;
     Document teamData;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton addToTeamsButton;
+    private javax.swing.JToggleButton finishedButton;
     private javax.swing.JComboBox leagueBox;
     private javax.swing.JLabel leagueLabel;
     private javax.swing.JLabel numberOfPlayersLabel;
