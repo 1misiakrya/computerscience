@@ -22,11 +22,32 @@ import nu.xom.Serializer;
  */
 public class SoccerTeams extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SoccerTeams
-     */
+    private SoccerTeamsViewer child;
+
     public SoccerTeams() {
         initComponents();
+
+        //Checking if the file has anything written.
+        File file = new File("Soccer Teams.xml");
+
+        if (file.length() == 0) {
+            //Creating new root and document if it has nothing written.
+            rootTeams = new Element(ELEMENT_TEAM);
+            teamData = new Document(rootTeams);
+        } else {
+            try {
+                //Getting the root and document if it has something written.
+                Builder builder = new Builder();
+                teamData = builder.build(file);
+                rootTeams = teamData.getRootElement();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    SoccerTeams(SoccerTeamsViewer aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -146,15 +167,11 @@ public class SoccerTeams extends javax.swing.JFrame {
         boolean fileFound = false;
 
         // Checking to see if the elements exist.
-        if (x == 0) {
-            for (int i = 0; i < rootTeams.getChildElements().size(); i++) {
-                if (rootTeams.getChildElements().get(i).getFirstChildElement("team").getValue().equals("league")) {
-                    fileFound = true;
-                }
+        for (int i = 0; i < rootTeams.getChildElements().size(); i++) {
+            if (rootTeams.getChildElements().get(i).getFirstChildElement("team").getValue().equals("league")) {
+                fileFound = true;
             }
         }
-
-        x = x + 1;
 
         if (!fileFound) {
 
@@ -162,6 +179,7 @@ public class SoccerTeams extends javax.swing.JFrame {
             Element team = new Element(ELEMENT_TEAM_NAME);
 
             Element league = new Element(ELEMENT_LEAGUE);
+            Element teamsInLeague = new Element(ELEMENT_TEAMS_IN_LEAGUE);
 
             Element players = new Element(ELEMENT_PLAYERS);
             players.appendChild("" + numberOfPlayersSpinner.getValue());
@@ -169,15 +187,15 @@ public class SoccerTeams extends javax.swing.JFrame {
             ticketCost.appendChild(ticketField.getText());
             Element leagueName = new Element(ELEMENT_LEAGUE_NAME);
             leagueName.appendChild("" + leagueBox.getSelectedItem());
-            Element teamName = new Element(ELEMENT_NAME);
+            Element teamName = new Element(ELEMENT_TEAM_NAME);
             teamName.appendChild(teamField.getText());
             Element teamInfo = new Element("info");
 
             //Appending the children to the main element.
             league.appendChild(leagueName);
-            leagueName.appendChild(teamName);
-            teamName.appendChild(team);
-            team.appendChild(teamInfo);
+            leagueName.appendChild(teamsInLeague);
+            teamsInLeague.appendChild(teamName);
+            teamName.appendChild(teamInfo);
             teamInfo.appendChild(players);
             teamInfo.appendChild(ticketCost);
             rootTeams.appendChild(league);
@@ -204,6 +222,12 @@ public class SoccerTeams extends javax.swing.JFrame {
         } catch (IOException ex) {
             System.err.println(ex);
         }
+
+        if (child == null) {
+            this.child = new SoccerTeamsViewer(this);
+        }
+        this.child.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_addToTeamsButtonActionPerformed
 
@@ -251,17 +275,17 @@ public class SoccerTeams extends javax.swing.JFrame {
         });
     }
 
-    static final String ELEMENT_TEAMS = "team";
+    static final String ELEMENT_TEAM = "team";
     static final String ELEMENT_TEAM_NAME = "teamName";
     static final String ELEMENT_LEAGUE = "league";
     static final String ELEMENT_PLAYERS = "players";
     static final String ELEMENT_TICKET_COST = "ticketCost";
     static final String ELEMENT_NAME = "name";
     static final String ELEMENT_LEAGUE_NAME = "leagueName";
-    int x = 0;
+    static final String ELEMENT_TEAMS_IN_LEAGUE = "teamsInLeague";
 
-    Element rootTeams = new Element(ELEMENT_TEAMS);
-    Document teamData = new Document(rootTeams);
+    Element rootTeams;
+    Document teamData;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton addToTeamsButton;
