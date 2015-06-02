@@ -39,10 +39,25 @@
                                   <Component id="importButton" min="-2" pref="128" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jScrollPane7" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane5" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jScrollPane7" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="premierLeagueLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jScrollPane5" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                          <Component id="serieALabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -50,11 +65,16 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" min="-2" pref="200" max="-2" attributes="0"/>
                           <Component id="jScrollPane6" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="laLigaLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="premierLeagueLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="bundesligaLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+                      <Component id="mLSLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
+                      <Component id="ligue1Label" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="50" max="32767" attributes="0"/>
@@ -69,7 +89,10 @@
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       <Component id="importButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="premierLeagueLabel" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="premierLeagueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="serieALabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane5" pref="174" max="32767" attributes="0"/>
@@ -77,11 +100,19 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="laLigaLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane6" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bundesligaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="mLSLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ligue1Label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane4" alignment="1" min="-2" pref="174" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" alignment="1" min="-2" pref="174" max="-2" attributes="0"/>
@@ -111,7 +142,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
+        <Component class="javax.swing.JTextArea" name="mLSArea">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -126,7 +157,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea3">
+        <Component class="javax.swing.JTextArea" name="ligue1Area">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -141,7 +172,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea4">
+        <Component class="javax.swing.JTextArea" name="bundesligaArea">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -156,7 +187,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea5">
+        <Component class="javax.swing.JTextArea" name="serieAArea">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -171,7 +202,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea6">
+        <Component class="javax.swing.JTextArea" name="laLigaArea">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
@@ -197,6 +228,31 @@
     <Component class="javax.swing.JLabel" name="premierLeagueLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Premier League:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="serieALabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Serie A:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="laLigaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="La Liga:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="bundesligaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bundesliga:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="mLSLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="MLS:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ligue1Label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ligue 1:"/>
       </Properties>
     </Component>
   </SubComponents>
