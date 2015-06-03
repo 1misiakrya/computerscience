@@ -184,6 +184,7 @@ public class SoccerTeams extends javax.swing.JFrame {
             }
         }
 
+        // Creating new elements if the file is not found.
         if (!fileFound) {
 
             //Creating the Elements.
@@ -225,8 +226,6 @@ public class SoccerTeams extends javax.swing.JFrame {
         } catch (IOException ex) {
             System.err.println(ex);
         }
-
-
     }//GEN-LAST:event_addToTeamsButtonActionPerformed
 
     private void leagueBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leagueBoxActionPerformed
@@ -234,7 +233,7 @@ public class SoccerTeams extends javax.swing.JFrame {
     }//GEN-LAST:event_leagueBoxActionPerformed
 
     private void finishedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishedButtonActionPerformed
-        
+
         if (child == null) {
             this.child = new SoccerTeamsViewer(this);
         }
@@ -293,6 +292,7 @@ public class SoccerTeams extends javax.swing.JFrame {
     //Boolean that, if true, will prevent the file from being re-written.
     boolean fileFound = false;
 
+    //Creating the root element and the document for the program.
     Element rootTeams;
     Document teamData;
 
