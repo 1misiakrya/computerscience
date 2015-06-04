@@ -28,7 +28,7 @@ public class SoccerTeams extends javax.swing.JFrame {
         initComponents();
 
         //Checking if the file has anything written.
-        File file = new File("Soccer Teams.xml");
+        File file = new File("team.xml");
 
         if (file.length() == 0) {
             //Creating new root and document if it has nothing written.
@@ -177,12 +177,12 @@ public class SoccerTeams extends javax.swing.JFrame {
 
     private void addToTeamsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToTeamsButtonActionPerformed
 
-        // Checking to see if the elements exist.
-        for (int i = 0; i < rootTeams.getChildElements().size(); i++) {
-            if (rootTeams.getChildElements().get(i).getFirstChildElement("team").getValue().equals("league")) {
-                fileFound = true;
-            }
-        }
+//        // Checking to see if the elements exist.
+//        for (int i = 0; i < rootTeams.getChildElements().size(); i++) {
+//            if (rootTeams.getChildElements().get(i).getFirstChildElement("team").getValue().equals("league")) {
+//                fileFound = true;
+//            }
+//        }
 
         // Creating new elements if the file is not found.
         if (!fileFound) {

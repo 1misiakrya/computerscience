@@ -39,6 +39,8 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        taPremierLeague3 = new javax.swing.JScrollPane();
+        premierLeagueArea3 = new javax.swing.JTextArea();
         importButton = new javax.swing.JButton();
         premierLeagueLabel = new javax.swing.JLabel();
         serieALabel = new javax.swing.JLabel();
@@ -48,12 +50,23 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
         ligue1Label = new javax.swing.JLabel();
         returnButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
-        premierLeagueField = new javax.swing.JTextField();
-        serieAField = new javax.swing.JTextField();
-        laLigaField = new javax.swing.JTextField();
-        bundesligaField = new javax.swing.JTextField();
-        mLSField = new javax.swing.JTextField();
-        ligue1Field = new javax.swing.JTextField();
+        taPremierLeague = new javax.swing.JScrollPane();
+        laLigaArea = new javax.swing.JTextArea();
+        taPremierLeague1 = new javax.swing.JScrollPane();
+        serieAArea = new javax.swing.JTextArea();
+        taPremierLeague2 = new javax.swing.JScrollPane();
+        premierLeagueArea = new javax.swing.JTextArea();
+        taPremierLeague4 = new javax.swing.JScrollPane();
+        mLSArea = new javax.swing.JTextArea();
+        taPremierLeague5 = new javax.swing.JScrollPane();
+        ligue1Area = new javax.swing.JTextArea();
+        taPremierLeague6 = new javax.swing.JScrollPane();
+        bundesligaArea = new javax.swing.JTextArea();
+
+        premierLeagueArea3.setEditable(false);
+        premierLeagueArea3.setColumns(20);
+        premierLeagueArea3.setRows(5);
+        taPremierLeague3.setViewportView(premierLeagueArea3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,69 +100,88 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
         titleLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         titleLabel.setText("Soccer Teams Viewer");
 
-        premierLeagueField.setEditable(false);
+        laLigaArea.setEditable(false);
+        laLigaArea.setColumns(20);
+        laLigaArea.setRows(5);
+        taPremierLeague.setViewportView(laLigaArea);
 
-        serieAField.setEditable(false);
+        serieAArea.setEditable(false);
+        serieAArea.setColumns(20);
+        serieAArea.setRows(5);
+        taPremierLeague1.setViewportView(serieAArea);
 
-        laLigaField.setEditable(false);
+        premierLeagueArea.setEditable(false);
+        premierLeagueArea.setColumns(20);
+        premierLeagueArea.setRows(5);
+        taPremierLeague2.setViewportView(premierLeagueArea);
 
-        bundesligaField.setEditable(false);
+        mLSArea.setEditable(false);
+        mLSArea.setColumns(20);
+        mLSArea.setRows(5);
+        taPremierLeague4.setViewportView(mLSArea);
 
-        mLSField.setEditable(false);
+        ligue1Area.setEditable(false);
+        ligue1Area.setColumns(20);
+        ligue1Area.setRows(5);
+        taPremierLeague5.setViewportView(ligue1Area);
 
-        ligue1Field.setEditable(false);
+        bundesligaArea.setEditable(false);
+        bundesligaArea.setColumns(20);
+        bundesligaArea.setRows(5);
+        taPremierLeague6.setViewportView(bundesligaArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(returnButton)
-                .addGap(79, 79, 79))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bundesligaField)
-                                .addGap(18, 18, 18)
-                                .addComponent(mLSField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(premierLeagueLabel)
-                                        .addGap(127, 127, 127))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(premierLeagueField, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(11, 11, 11)
-                                        .addComponent(serieALabel))
-                                    .addComponent(serieAField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(laLigaField)
-                            .addComponent(ligue1Field, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(laLigaLabel))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(bundesligaLabel)
-                        .addGap(160, 160, 160)
-                        .addComponent(mLSLabel)
-                        .addGap(201, 201, 201)
-                        .addComponent(ligue1Label))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addComponent(titleLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(267, 267, 267)
-                        .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addComponent(importButton, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(24, 24, 24)
+                                    .addComponent(premierLeagueLabel)
+                                    .addGap(138, 138, 138))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(10, 10, 10)
+                                            .addComponent(bundesligaLabel))
+                                        .addComponent(taPremierLeague2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(serieALabel)
+                            .addGap(169, 169, 169)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(13, 13, 13)
+                                    .addComponent(laLigaLabel))
+                                .addComponent(taPremierLeague, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(taPremierLeague6, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(taPremierLeague1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(taPremierLeague4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(35, 35, 35)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(returnButton)
+                                        .addComponent(taPremierLeague5, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(mLSLabel)
+                        .addGap(190, 190, 190)
+                        .addComponent(ligue1Label)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,32 +190,36 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
                 .addComponent(titleLabel)
                 .addGap(31, 31, 31)
                 .addComponent(importButton)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(premierLeagueLabel)
+                    .addComponent(serieALabel)
+                    .addComponent(laLigaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(premierLeagueLabel)
-                            .addComponent(serieALabel)
-                            .addComponent(laLigaLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(laLigaField)
-                            .addComponent(premierLeagueField)
-                            .addComponent(serieAField))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bundesligaLabel)
-                            .addComponent(mLSLabel)
-                            .addComponent(ligue1Label))
-                        .addGap(12, 12, 12)
+                        .addComponent(taPremierLeague2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bundesligaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(taPremierLeague6, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(mLSField, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                            .addComponent(ligue1Field)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(243, 243, 243)
-                        .addComponent(bundesligaField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(9, 9, 9)
-                .addComponent(returnButton))
+                            .addComponent(taPremierLeague1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .addComponent(taPremierLeague))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mLSLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ligue1Label, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(taPremierLeague4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taPremierLeague5, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(returnButton)
+                        .addGap(99, 99, 99)))
+                .addContainerGap())
         );
 
         pack();
@@ -205,22 +241,22 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
             for (int i = 0; i < teams.size(); i++) {
                 switch (teams.get(i).getFirstChildElement("leagueName").getValue()) {
                     case "Premier League":
-                        premierLeagueField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        premierLeagueArea.setText(premierLeagueArea.getText() + "\n" + teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
                         break;
                     case "Serie A":
-                        serieAField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        serieAArea.setText(serieAArea.getText() + "\n" + teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
                         break;
                     case "La Liga":
-                        laLigaField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        laLigaArea.setText(laLigaArea.getText() + "\n" + teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
                         break;
                     case "Bundesliga":
-                        bundesligaField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        bundesligaArea.setText(bundesligaArea.getText() + "\n" + teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
                         break;
                     case "MLS":
-                        mLSField.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        mLSArea.setText(mLSArea.getText() + "\n" + teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
                         break;
                     case "Ligue 1":
-                        ligue1Field.setText(teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
+                        ligue1Area.setText(ligue1Area.getText() + "\n" + teams.get(i).getFirstChildElement("teamName").getValue() + "\n");
                         break;
                     default:
                         System.out.println("ERROR - Invalid League");
@@ -277,20 +313,28 @@ public class SoccerTeamsViewer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bundesligaField;
+    private javax.swing.JTextArea bundesligaArea;
     private javax.swing.JLabel bundesligaLabel;
     private javax.swing.JButton importButton;
-    private javax.swing.JTextField laLigaField;
+    private javax.swing.JTextArea laLigaArea;
     private javax.swing.JLabel laLigaLabel;
-    private javax.swing.JTextField ligue1Field;
+    private javax.swing.JTextArea ligue1Area;
     private javax.swing.JLabel ligue1Label;
-    private javax.swing.JTextField mLSField;
+    private javax.swing.JTextArea mLSArea;
     private javax.swing.JLabel mLSLabel;
-    private javax.swing.JTextField premierLeagueField;
+    private javax.swing.JTextArea premierLeagueArea;
+    private javax.swing.JTextArea premierLeagueArea3;
     private javax.swing.JLabel premierLeagueLabel;
     private javax.swing.JButton returnButton;
-    private javax.swing.JTextField serieAField;
+    private javax.swing.JTextArea serieAArea;
     private javax.swing.JLabel serieALabel;
+    private javax.swing.JScrollPane taPremierLeague;
+    private javax.swing.JScrollPane taPremierLeague1;
+    private javax.swing.JScrollPane taPremierLeague2;
+    private javax.swing.JScrollPane taPremierLeague3;
+    private javax.swing.JScrollPane taPremierLeague4;
+    private javax.swing.JScrollPane taPremierLeague5;
+    private javax.swing.JScrollPane taPremierLeague6;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
