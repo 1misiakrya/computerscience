@@ -1,5 +1,9 @@
 /*
- * HEADER
+ * Name: SplashScreen
+ * Date: June 11, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program is the start screen of the quiz program.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.summative;
 
