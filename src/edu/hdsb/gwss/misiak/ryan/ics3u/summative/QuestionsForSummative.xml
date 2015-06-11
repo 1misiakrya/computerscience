@@ -8,7 +8,7 @@
 -->
 
 
-    <questions>
+<questions>
 	<questionNumber>1
 		<question>Who created Java?</question>
 		<answer1>James Gosling</answer1>
@@ -28,7 +28,8 @@
 	<questionNumber>3
 		<question>What is the output of the following code: 
 			int x = 4;
-			System.out.println( 5*x + " " + x );<question>
+			System.out.println( 5*x + " " + x );
+		</question>
 		<answer1>5*x x</answer1>
 		<answer2>20 20</answer2>
 		<answer3>20 4</answer3>
@@ -89,16 +90,16 @@
 	</questionNumber>
 	<questionNumber>10
 		<question>What is the BEST case for SWAPS when bubble sorting?</question>
-		<answer1>N²</answer1>
-		<answer2>N²/2</answer2>
+		<answer1>N^2</answer1>
+		<answer2>N^2/2</answer2>
 		<answer3>0</answer3>
 		<answer4>N</answer4>
                 <correctAnswer>answer3</correctAnswer>
 	</questionNumber>
 	<questionNumber>11
 		<question>What is the AVERAGE case for SWAPS when bubble sorting?</question>
-		<answer1>N²</answer1>
-		<answer2>N²/2</answer2>
+		<answer1>N^2</answer1>
+		<answer2>N^2/2</answer2>
 		<answer3>0</answer3>
 		<answer4>N</answer4>
                 <correctAnswer>answer2</correctAnswer>

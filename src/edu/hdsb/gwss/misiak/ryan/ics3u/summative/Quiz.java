@@ -1,7 +1,17 @@
 /*
- * HEADER
+ * Name: Quiz
+ * Date: June 10, 2015
+ * Version: v0.1
+ * Author: Mr. R. Misiak
+ * Description: This program is the quiz portion of the quiz program.
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.summative;
+
+import java.io.File;
+import nu.xom.Builder;
+import nu.xom.Document;
+import nu.xom.Element;
+import nu.xom.Elements;
 
 /**
  *
@@ -10,7 +20,7 @@ package edu.hdsb.gwss.misiak.ryan.ics3u.summative;
 public class Quiz extends javax.swing.JFrame {
 
     private int score = 0;
-    
+
     /**
      * Creates new form Quiz
      */
@@ -95,7 +105,12 @@ public class Quiz extends javax.swing.JFrame {
         userAnswerLabel.setText("Your Answer: ");
 
         answerButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        answerButton.setText("See Correct Answer");
+        answerButton.setText("Submit Answer");
+        answerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                answerButtonActionPerformed(evt);
+            }
+        });
 
         questionNumberTitleLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         questionNumberTitleLabel.setText("Question #");
@@ -249,12 +264,45 @@ public class Quiz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void displayQuizResults(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayQuizResults
-        
-        new QuizResults( score ).setVisible( true );
-        this.setVisible( false );
+
+        new QuizResults(score).setVisible(true);
+        this.setVisible(false);
         this.dispose();
 
     }//GEN-LAST:event_displayQuizResults
+
+    private void answerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerButtonActionPerformed
+
+        File file = new File("Questions For Summative.xml");
+
+        Builder builder = new Builder();
+        Document questionsDocument;
+        Element questionsRoot;
+        int[] questionOrder = new int[10];
+
+        for (int i = 0; i < questionOrder.length; i++) {
+            questionOrder[i] = (int) (Math.random()*10) + 1;
+        }
+
+        try {
+            questionsDocument = builder.build(file);
+            questionsRoot = questionsDocument.getRootElement();
+            Elements questions = questionsRoot.getChildElements();
+            System.out.println(questions.size());
+            for (int i = 0; i < questions.size(); i++) {
+
+                System.out.println(questions.get(i).getFirstChildElement("question").getValue());
+                System.out.println(questions.get(i).getFirstChildElement("answer1").getValue());
+                System.out.println(questions.get(i).getFirstChildElement("answer2").getValue());
+                System.out.println(questions.get(i).getFirstChildElement("answer3").getValue());
+                System.out.println(questions.get(i).getFirstChildElement("answer4").getValue());
+                System.out.println(questions.get(i).getFirstChildElement("correctAnswer").getValue());
+                System.out.println();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_answerButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aField;

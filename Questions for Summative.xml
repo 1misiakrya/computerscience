@@ -1,86 +1,108 @@
 <questions>
-	<questionNumber>1
+	<question>
+		<questionNumber>1</questionNumber>
 		<question>Who created Java?</question>
 		<answer1>James Gosling</answer1>
 		<answer2>Steve Jobs</answer2>
 		<answer3>Lebron James</answer3>
 		<answer4>Mark Zuckerburg</answer4>
-		<correctAnswer>a</correctAnswer>
-	</questionNumber>
-	<questionNumber>2
+		<correctAnswer>answer1</correctAnswer>
+	</question>
+	<question>
+		<questionNumber>2</questionNumber>
 		<question>What is the Java method call for square roots?</question>
 		<answer1>Math.sin( value );</answer1>
 		<answer2>Math.sqrt( String, int );</answer2>
 		<answer3>Math.floor( valueOne );</answer3>
 		<answer4>Math.sqrt( value );</answer4>
-	</questionNumber>
-	<questionNumber>3
+ 	        <correctAnswer>answer4</correctAnswer>
+	</question>
+	<question>
+		<questionNumber>3</questionNumber>
 		<question>What is the output of the following code: 
 			int x = 4;
-			System.out.println( 5*x + " " + x );<question>
+			System.out.println( 5*x + " " + x );
+		</question>
 		<answer1>5*x x</answer1>
 		<answer2>20 20</answer2>
 		<answer3>20 4</answer3>
 		<answer4>4 4</answer4>
-	</questionNumber>
-	<questionNumber>4
+ 	        <correctAnswer>answer3</correctAnswer>
+	</question>
+	<question>
+		<questionNumber>4</questionNumber>
 		<question>What will this line of code print out:
-			String s = "Santa has a brand new bag";
-			System.out.println( s );
-			s.toUpperCase();
+				String s = "Santa has a brand new bag";
+				System.out.println( s );
+				s.toUpperCase();
 		</question>
 		<answer1>santa has a brand new bag</answer1>
 		<answer2>SaNtA hAs A bRaNd NeW bAg</answer2>
 		<answer3>SANTA HAS A BRAND NEW BAG</answer3>
 		<answer4>Santa has a brand new bag</answer4>
-	</questionNumber>
-	<questionNumber>5
-		<question>What is the Java method call for square roots?</question>
-		<answer1>Math.sin( value );</answer1>
-		<answer2>Math.sqrt( String, int );</answer2>
+   	        <correctAnswer>answer4</correctAnswer>
+	</question>
+	<question>
+		<questionNumber>5</questionNumber>
+		<question>What is the Java method call for sin?</question>
+		<answer1>Math.sqrt( String, int );</answer1>
+               	<answer2>Math.sin( value );</answer2>
 		<answer3>Math.floor( valueOne );</answer3>
 		<answer4>Math.sqrt( value );</answer4>
-	</questionNumber>6
-		<question>What company did James Gosling work for when he created Java?</question>
+	        <correctAnswer>answer2</correctAnswer>
+	</question>
+	<question>
+	        <questionNumber>6</questionNumber>
+			<question>What company did James Gosling work for when he created Java?</question>
 		<answer1>Apple</answer1>
 		<answer2>Sun Microsystems</answer2>
 		<answer3>Atari</answer3>
 		<answer4>He didn't work for a company</answer4>
-	</questionNumber>
-	<questionNumber>7
-		<question>What is the Java method call for absolute values?</question>
+   	        <correctAnswer>answer2</correctAnswer>
+	</question>
+	<question>
+		<questionNumber>7</questionNumber>
+			<question>What is the Java method call for absolute values?</question>
 		<answer1>Math.abs( value );</answer1>
 		<answer2>Math.absoluteValue( String, int );</answer2>
 		<answer3>Math.absolute( valueOne );</answer3>
 		<answer4>Math.absolute( value );</answer4>
-	</questionNumber>
-	<questionNumber>8
+     	        <correctAnswer>answer1</correctAnswer>
+	</question>
+	<question>
+		<questionNumber>8</questionNumber>
 		<question>What does JVM stand for?</question>
-		<answer1>Jungle Virtual Monkeys</answer1>
+      	        <answer1>Java Virtual Machine</answer1>
 		<answer2>Jordan V Martin</answer2>
 		<answer3>Java Virtual Moderator</answer3>
-		<answer4>Java Virtual Machine</answer4>
-		<correctAnswer>4</correctAnswer
-	</questionNumber>
-	<questionNumber>9
+		<answer4>Jungle Virtual Monkeys</answer4>
+		<correctAnswer>answer1</correctAnswer>
+	</question>
+	<question>
+		<questionNumber>9</questionNumber>
 		<question>What is the Java method call for a maximum value?</question>
 		<answer1>Math.max( value );</answer1>
 		<answer2>Math.min( valueOne, valueTwo );</answer2>
 		<answer3>Math.max( valueOne, valueTwo );</answer3>
 		<answer4>Math.sqrt( value );</answer4>
-	</questionNumber>
-	<questionNumber>10
+             	<correctAnswer>answer3</correctAnswer>
+	</question>
+	<question>
+		<questionNumber>10</questionNumber>
 		<question>What is the BEST case for SWAPS when bubble sorting?</question>
-		<answer1>N²</answer1>
-		<answer2>N²/2</answer2>
+		<answer1>N^2</answer1>
+		<answer2>N^2/2</answer2>
 		<answer3>0</answer3>
 		<answer4>N</answer4>
-	</questionNumber>
-	<questionNumber>11
-		<question>What is the AVERAGE case for SWAPS when selection sorting?</question>
-		<answer1>N²</answer1>
-		<answer2>N²/2</answer2>
+              	<correctAnswer>answer3</correctAnswer>
+	</question>
+	<question>
+		<questionNumber>11</questionNumber>
+		<question>What is the AVERAGE case for SWAPS when bubble sorting?</question>
+		<answer1>N^2</answer1>
+		<answer2>N^2/2</answer2>
 		<answer3>0</answer3>
 		<answer4>N</answer4>
-	</questionNumber>
+        	<correctAnswer>answer2</correctAnswer>
+	</question>
 </questions>
