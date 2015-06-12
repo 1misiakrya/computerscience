@@ -8,6 +8,8 @@
 package edu.hdsb.gwss.misiak.ryan.ics3u.summative;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Collections;
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -19,13 +21,48 @@ import nu.xom.Elements;
  */
 public class Quiz extends javax.swing.JFrame {
 
-    private int score = 0;
+    File file = new File("Questions For Summative.xml");
+    int score = 0;
+    int x = 1;
+    String[] questionHolder = new String[10];
+    Builder builder = new Builder();
+    Document questionsDocument;
+    Element questionsRoot;
+    Elements questions;
+    int maxScore = 0;
+    int userScore = 0;
 
     /**
      * Creates new form Quiz
      */
     public Quiz() {
         initComponents();
+        questionNumberLabel.setText("" + x);
+
+        try {
+            questionsDocument = builder.build(file);
+            questionsRoot = questionsDocument.getRootElement();
+            questions = questionsRoot.getChildElements();
+
+            //Attaching strings to the string array.
+            for (int i = 0; i < questionHolder.length; i++) {
+                questionHolder[i] = (questions.get(i).getFirstChildElement("question").getValue());
+            }
+
+            //Shuffles the order of the questions, so that they are not the same with each played game.
+            Collections.shuffle(Arrays.asList(questionHolder));
+
+            questionArea.setText(questions.get(x).getFirstChildElement("question").getValue());
+            aField.setText(questions.get(x).getFirstChildElement("answer1").getValue());
+            bField.setText(questions.get(x).getFirstChildElement("answer2").getValue());
+            cField.setText(questions.get(x).getFirstChildElement("answer3").getValue());
+            dField.setText(questions.get(x).getFirstChildElement("answer4").getValue());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        nextQuestionButton.setEnabled(false);
+        toResultsButton.setEnabled(false);
     }
 
     /**
@@ -63,6 +100,11 @@ public class Quiz extends javax.swing.JFrame {
         bRadioButton = new javax.swing.JRadioButton();
         cRadioButton = new javax.swing.JRadioButton();
         dRadioButton = new javax.swing.JRadioButton();
+        nextQuestionButton = new javax.swing.JToggleButton();
+        userScoreLabel = new javax.swing.JLabel();
+        userScoreTitleLabel = new javax.swing.JLabel();
+        slashLabel = new javax.swing.JLabel();
+        maxScoreLabel = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -83,16 +125,16 @@ public class Quiz extends javax.swing.JFrame {
         questionTitleLabel.setText("Question:");
 
         aLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        aLabel.setText("A)");
+        aLabel.setText("Answer 1:");
 
         bLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bLabel.setText("B)");
+        bLabel.setText("Answer 2:");
 
         cLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cLabel.setText("C)");
+        cLabel.setText("Answer 3:");
 
         dLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        dLabel.setText("D)");
+        dLabel.setText("Answer 4:");
 
         aField.setEditable(false);
 
@@ -129,16 +171,36 @@ public class Quiz extends javax.swing.JFrame {
         messageLabel.setText("**message**");
 
         buttonGroup1.add(aRadioButton);
-        aRadioButton.setText("A");
+        aRadioButton.setText("answer1");
 
         buttonGroup1.add(bRadioButton);
-        bRadioButton.setText("B");
+        bRadioButton.setText("answer2");
 
         buttonGroup1.add(cRadioButton);
-        cRadioButton.setText("C");
+        cRadioButton.setText("answer3");
 
         buttonGroup1.add(dRadioButton);
-        dRadioButton.setText("D");
+        dRadioButton.setText("answer4");
+
+        nextQuestionButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nextQuestionButton.setText("Next Question");
+        nextQuestionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextQuestionButtonActionPerformed(evt);
+            }
+        });
+
+        userScoreLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        userScoreLabel.setText("0");
+
+        userScoreTitleLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        userScoreTitleLabel.setText("Your Score:");
+
+        slashLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        slashLabel.setText("/");
+
+        maxScoreLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        maxScoreLabel.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,14 +211,10 @@ public class Quiz extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(titleLabel)
-                        .addGap(0, 64, Short.MAX_VALUE))
+                        .addGap(0, 85, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(aLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(aField))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -170,43 +228,57 @@ public class Quiz extends javax.swing.JFrame {
                                         .addGap(116, 116, 116)
                                         .addComponent(messageLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(toResultsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(answerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(dLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dField))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cField))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(toResultsButton)
+                                    .addComponent(nextQuestionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(121, 121, 121)
                                 .addComponent(questionNumberTitleLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(questionNumberLabel)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bField))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(aLabel)
+                                    .addComponent(bLabel)
+                                    .addComponent(cLabel)
+                                    .addComponent(dLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(dField, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                                    .addComponent(cField)
+                                    .addComponent(bField)
+                                    .addComponent(aField)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(questionTitleLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(userAnswerLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(dRadioButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(answerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cRadioButton)
+                                    .addComponent(bRadioButton)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(aRadioButton)
+                                        .addGap(99, 99, 99)
+                                        .addComponent(userScoreTitleLabel)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(userScoreLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(slashLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(maxScoreLabel)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(userAnswerLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dRadioButton)
-                    .addComponent(cRadioButton)
-                    .addComponent(bRadioButton)
-                    .addComponent(aRadioButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,23 +312,36 @@ public class Quiz extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userAnswerLabel)
-                    .addComponent(aRadioButton))
+                    .addComponent(aRadioButton)
+                    .addComponent(userScoreLabel)
+                    .addComponent(userScoreTitleLabel)
+                    .addComponent(slashLabel)
+                    .addComponent(maxScoreLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(answerButton)
-                        .addComponent(correctAnswerLabel))
-                    .addComponent(messageLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(dRadioButton)
+                        .addGap(0, 11, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 3, Short.MAX_VALUE)
+                        .addComponent(answerButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(toResultsButton)
-                    .addComponent(correctAnswerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(correctAnswerLabel))
+                            .addComponent(messageLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(toResultsButton)
+                            .addComponent(correctAnswerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(nextQuestionButton))
                 .addContainerGap())
         );
 
@@ -273,36 +358,64 @@ public class Quiz extends javax.swing.JFrame {
 
     private void answerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerButtonActionPerformed
 
-        File file = new File("Questions For Summative.xml");
+        if ((aRadioButton.isSelected()) && (questions.get(x).getFirstChildElement("correctAnswer").getValue().equals("answer1"))) {
+            messageLabel.setText("Correct!");
+            userScore = userScore + 1;
+        } else if ((bRadioButton.isSelected()) && (questions.get(x).getFirstChildElement("correctAnswer").getValue().equals("answer2"))) {
+            messageLabel.setText("Cprrect!");
+            userScore = userScore + 1;
+        } else if ((cRadioButton.isSelected()) && (questions.get(x).getFirstChildElement("correctAnswer").getValue().equals("answer3"))) {
+            messageLabel.setText("Correct!");
+            userScore = userScore + 1;
+        } else if ((dRadioButton.isSelected()) && (questions.get(x).getFirstChildElement("correctAnswer").getValue().equals("answer4"))) {
+            messageLabel.setText("Correct!");
+            userScore = userScore + 1;
+        } else {
+            messageLabel.setText("Sorry!");
+        }
+        
+        maxScore = maxScore + 1;
+        
+        userScoreLabel.setText("" + userScore);
+        maxScoreLabel.setText("" + maxScore);
+        
+        correctAnswerField.setText(questions.get(x).getFirstChildElement("correctAnswer").getValue());
 
-        Builder builder = new Builder();
-        Document questionsDocument;
-        Element questionsRoot;
-        int[] questionOrder = new int[10];
+        nextQuestionButton.setEnabled(true);
 
-        for (int i = 0; i < questionOrder.length; i++) {
-            questionOrder[i] = (int) (Math.random()*10) + 1;
+        //Allows the user to see their end results.
+        if (x == 10) {
+            toResultsButton.setEnabled(true);
         }
 
-        try {
-            questionsDocument = builder.build(file);
-            questionsRoot = questionsDocument.getRootElement();
-            Elements questions = questionsRoot.getChildElements();
-            System.out.println(questions.size());
-            for (int i = 0; i < questions.size(); i++) {
+    }//GEN-LAST:event_answerButtonActionPerformed
 
-                System.out.println(questions.get(i).getFirstChildElement("question").getValue());
-                System.out.println(questions.get(i).getFirstChildElement("answer1").getValue());
-                System.out.println(questions.get(i).getFirstChildElement("answer2").getValue());
-                System.out.println(questions.get(i).getFirstChildElement("answer3").getValue());
-                System.out.println(questions.get(i).getFirstChildElement("answer4").getValue());
-                System.out.println(questions.get(i).getFirstChildElement("correctAnswer").getValue());
-                System.out.println();
+    private void nextQuestionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextQuestionButtonActionPerformed
+
+        x = x + 1;
+
+        try {
+            //Attaching strings to the string array.
+            for (int i = 0; i < questionHolder.length; i++) {
+                questionHolder[i] = (questions.get(i).getFirstChildElement("question").getValue());
             }
+
+            questionArea.setText(questions.get(x).getFirstChildElement("question").getValue());
+            aField.setText(questions.get(x).getFirstChildElement("answer1").getValue());
+            bField.setText(questions.get(x).getFirstChildElement("answer2").getValue());
+            cField.setText(questions.get(x).getFirstChildElement("answer3").getValue());
+            dField.setText(questions.get(x).getFirstChildElement("answer4").getValue());
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_answerButtonActionPerformed
+
+        questionNumberLabel.setText("" + x);
+
+        answerButton.setEnabled(true);
+        
+        correctAnswerField.setText(" ");
+
+    }//GEN-LAST:event_nextQuestionButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aField;
@@ -323,13 +436,18 @@ public class Quiz extends javax.swing.JFrame {
     private javax.swing.JRadioButton dRadioButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel maxScoreLabel;
     private javax.swing.JLabel messageLabel;
+    private javax.swing.JToggleButton nextQuestionButton;
     private javax.swing.JTextArea questionArea;
     private javax.swing.JLabel questionNumberLabel;
     private javax.swing.JLabel questionNumberTitleLabel;
     private javax.swing.JLabel questionTitleLabel;
+    private javax.swing.JLabel slashLabel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton toResultsButton;
     private javax.swing.JLabel userAnswerLabel;
+    private javax.swing.JLabel userScoreLabel;
+    private javax.swing.JLabel userScoreTitleLabel;
     // End of variables declaration//GEN-END:variables
 }
