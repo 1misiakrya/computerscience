@@ -20,8 +20,8 @@
 	<question>
 		<questionNumber>3</questionNumber>
 		<question>What is the output of the following code: 
-			int x = 4;
-			System.out.println( 5*x + " " + x );
+	int x = 4;
+	System.out.println( 5*x + " " + x );
 		</question>
 		<answer1>5*x x</answer1>
 		<answer2>20 20</answer2>
@@ -32,9 +32,9 @@
 	<question>
 		<questionNumber>4</questionNumber>
 		<question>What will this line of code print out:
-				String s = "Santa has a brand new bag";
-				System.out.println( s );
-				s.toUpperCase();
+		String s = "Santa has a brand new bag";
+	System.out.println( s );
+	s.toUpperCase();
 		</question>
 		<answer1>santa has a brand new bag</answer1>
 		<answer2>SaNtA hAs A bRaNd NeW bAg</answer2>
@@ -53,7 +53,7 @@
 	</question>
 	<question>
 	        <questionNumber>6</questionNumber>
-			<question>What company did James Gosling work for when he created Java?</question>
+		<question>What company did James Gosling work for when he created Java?</question>
 		<answer1>Apple</answer1>
 		<answer2>Sun Microsystems</answer2>
 		<answer3>Atari</answer3>
@@ -62,7 +62,7 @@
 	</question>
 	<question>
 		<questionNumber>7</questionNumber>
-			<question>What is the Java method call for absolute values?</question>
+		<question>What is the Java method call for absolute values?</question>
 		<answer1>Math.abs( value );</answer1>
 		<answer2>Math.absoluteValue( String, int );</answer2>
 		<answer3>Math.absolute( valueOne );</answer3>

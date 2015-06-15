@@ -7,6 +7,7 @@
  */
 package edu.hdsb.gwss.misiak.ryan.ics3u.summative;
 
+import edu.hdsb.gwss.misiak.ryan.ics3u.u6.ArrayHelper;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,7 +23,6 @@ import nu.xom.Elements;
 public class Quiz extends javax.swing.JFrame {
 
     File file = new File("Questions For Summative.xml");
-    int score = 0;
     int x = 1;
     String[] questionHolder = new String[10];
     Builder builder = new Builder();
@@ -31,6 +31,8 @@ public class Quiz extends javax.swing.JFrame {
     Elements questions;
     int maxScore = 0;
     int userScore = 0;
+    int[] questionNumbersBeforeChange = new int[10];
+    int[] questionNumbers = new int[10];
 
     /**
      * Creates new form Quiz
@@ -38,21 +40,24 @@ public class Quiz extends javax.swing.JFrame {
     public Quiz() {
         initComponents();
         questionNumberLabel.setText("" + x);
+        int random;
 
         try {
             questionsDocument = builder.build(file);
             questionsRoot = questionsDocument.getRootElement();
             questions = questionsRoot.getChildElements();
 
+
+
             //Attaching strings to the string array.
             for (int i = 0; i < questionHolder.length; i++) {
-                questionHolder[i] = (questions.get(i).getFirstChildElement("question").getValue());
+                do {
+                    random = (int) (Math.random() * 10);
+                } while (ArrayHelper.linearSearch(questionNumbersBeforeChange, random) != -1); 
+                questionHolder[i] = (questions.get(random).getFirstChildElement("question").getValue());
             }
 
-            //Shuffles the order of the questions, so that they are not the same with each played game.
-            Collections.shuffle(Arrays.asList(questionHolder));
-
-            questionArea.setText(questions.get(x).getFirstChildElement("question").getValue());
+            questionArea.setText(questionHolder[x]);
             aField.setText(questions.get(x).getFirstChildElement("answer1").getValue());
             bField.setText(questions.get(x).getFirstChildElement("answer2").getValue());
             cField.setText(questions.get(x).getFirstChildElement("answer3").getValue());
@@ -350,7 +355,7 @@ public class Quiz extends javax.swing.JFrame {
 
     private void displayQuizResults(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayQuizResults
 
-        new QuizResults(score).setVisible(true);
+        new QuizResults(userScore).setVisible(true);
         this.setVisible(false);
         this.dispose();
 
@@ -358,27 +363,27 @@ public class Quiz extends javax.swing.JFrame {
 
     private void answerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerButtonActionPerformed
 
-        if ((aRadioButton.isSelected()) && (questions.get(x).getFirstChildElement("correctAnswer").getValue().equals("answer1"))) {
+        if ((aRadioButton.isSelected()) && (questions.get(questionNumbers[x]).getFirstChildElement("correctAnswer").getValue().equals("answer1"))) {
             messageLabel.setText("Correct!");
             userScore = userScore + 1;
-        } else if ((bRadioButton.isSelected()) && (questions.get(x).getFirstChildElement("correctAnswer").getValue().equals("answer2"))) {
-            messageLabel.setText("Cprrect!");
-            userScore = userScore + 1;
-        } else if ((cRadioButton.isSelected()) && (questions.get(x).getFirstChildElement("correctAnswer").getValue().equals("answer3"))) {
+        } else if ((bRadioButton.isSelected()) && (questions.get(questionNumbers[x]).getFirstChildElement("correctAnswer").getValue().equals("answer2"))) {
             messageLabel.setText("Correct!");
             userScore = userScore + 1;
-        } else if ((dRadioButton.isSelected()) && (questions.get(x).getFirstChildElement("correctAnswer").getValue().equals("answer4"))) {
+        } else if ((cRadioButton.isSelected()) && (questions.get(questionNumbers[x]).getFirstChildElement("correctAnswer").getValue().equals("answer3"))) {
+            messageLabel.setText("Correct!");
+            userScore = userScore + 1;
+        } else if ((dRadioButton.isSelected()) && (questions.get(questionNumbers[x]).getFirstChildElement("correctAnswer").getValue().equals("answer4"))) {
             messageLabel.setText("Correct!");
             userScore = userScore + 1;
         } else {
             messageLabel.setText("Sorry!");
         }
-        
+
         maxScore = maxScore + 1;
-        
+
         userScoreLabel.setText("" + userScore);
         maxScoreLabel.setText("" + maxScore);
-        
+
         correctAnswerField.setText(questions.get(x).getFirstChildElement("correctAnswer").getValue());
 
         nextQuestionButton.setEnabled(true);
@@ -395,10 +400,6 @@ public class Quiz extends javax.swing.JFrame {
         x = x + 1;
 
         try {
-            //Attaching strings to the string array.
-            for (int i = 0; i < questionHolder.length; i++) {
-                questionHolder[i] = (questions.get(i).getFirstChildElement("question").getValue());
-            }
 
             questionArea.setText(questions.get(x).getFirstChildElement("question").getValue());
             aField.setText(questions.get(x).getFirstChildElement("answer1").getValue());
@@ -412,7 +413,7 @@ public class Quiz extends javax.swing.JFrame {
         questionNumberLabel.setText("" + x);
 
         answerButton.setEnabled(true);
-        
+
         correctAnswerField.setText(" ");
 
     }//GEN-LAST:event_nextQuestionButtonActionPerformed
