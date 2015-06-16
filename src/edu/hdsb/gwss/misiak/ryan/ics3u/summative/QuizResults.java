@@ -21,6 +21,17 @@ public class QuizResults extends javax.swing.JFrame {
         int maxScore = 10;
         maxScoreLabel.setText("" + maxScore);
         userScoreLabel.setText("" + score);
+        if (score == 10) {
+            messageLabel.setText("Perfect Score! Nice Work!");
+        } else if (score >= 8) {
+            messageLabel.setText("So Close to Perfect! Great Job!");
+        } else if (score >= 7) {
+            messageLabel.setText("You Can Do Better! Study Some More and Try Again!");
+        } else if (score >= 5) {
+            messageLabel.setText("You Are Close to Failing... Study More!!!");
+        } else {
+            messageLabel.setText("Fail - Need to Study a Lot More...");
+        }
     }
 
     /**
@@ -38,6 +49,7 @@ public class QuizResults extends javax.swing.JFrame {
         userScoreLabel = new javax.swing.JLabel();
         maxScoreLabel = new javax.swing.JLabel();
         slashLabel = new javax.swing.JLabel();
+        messageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +70,8 @@ public class QuizResults extends javax.swing.JFrame {
         slashLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         slashLabel.setText("/");
 
+        messageLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,12 +86,15 @@ public class QuizResults extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(userScoreTitleLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(userScoreLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(slashLabel)
-                        .addGap(10, 10, 10)
-                        .addComponent(maxScoreLabel)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(messageLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(userScoreLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(slashLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(maxScoreLabel)))))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,14 +106,16 @@ public class QuizResults extends javax.swing.JFrame {
                         .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(userScoreTitleLabel)
-                            .addComponent(userScoreLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(maxScoreLabel)
-                        .addGap(101, 101, 101))
+                            .addComponent(userScoreLabel)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(slashLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)))
+                        .addComponent(slashLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(maxScoreLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addComponent(messageLabel)
+                .addGap(45, 45, 45)
                 .addComponent(thankYouLabel)
                 .addGap(21, 21, 21))
         );
@@ -119,6 +138,7 @@ public class QuizResults extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel maxScoreLabel;
+    private javax.swing.JLabel messageLabel;
     private javax.swing.JLabel slashLabel;
     private javax.swing.JLabel thankYouLabel;
     private javax.swing.JLabel titleLabel;

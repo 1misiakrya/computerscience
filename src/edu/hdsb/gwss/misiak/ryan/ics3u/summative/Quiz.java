@@ -9,8 +9,6 @@ package edu.hdsb.gwss.misiak.ryan.ics3u.summative;
 
 import edu.hdsb.gwss.misiak.ryan.ics3u.u6.ArrayHelper;
 import java.io.File;
-import java.util.Arrays;
-import java.util.Collections;
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -23,15 +21,13 @@ import nu.xom.Elements;
 public class Quiz extends javax.swing.JFrame {
 
     File file = new File("Questions For Summative.xml");
-    int x = 1;
-    String[] questionHolder = new String[10];
+    int x = 0;
     Builder builder = new Builder();
     Document questionsDocument;
     Element questionsRoot;
     Elements questions;
     int maxScore = 0;
     int userScore = 0;
-    int[] questionNumbersBeforeChange = new int[10];
     int[] questionNumbers = new int[10];
 
     /**
@@ -39,7 +35,7 @@ public class Quiz extends javax.swing.JFrame {
      */
     public Quiz() {
         initComponents();
-        questionNumberLabel.setText("" + x);
+        questionNumberLabel.setText("" + (x + 1));
         int random;
 
         try {
@@ -47,21 +43,23 @@ public class Quiz extends javax.swing.JFrame {
             questionsRoot = questionsDocument.getRootElement();
             questions = questionsRoot.getChildElements();
 
-
-
-            //Attaching strings to the string array.
-            for (int i = 0; i < questionHolder.length; i++) {
-                do {
-                    random = (int) (Math.random() * 10);
-                } while (ArrayHelper.linearSearch(questionNumbersBeforeChange, random) != -1); 
-                questionHolder[i] = (questions.get(random).getFirstChildElement("question").getValue());
+            for (int i = 0; i < questionNumbers.length; i++) {
+                questionNumbers[i] = 20;
             }
 
-            questionArea.setText(questionHolder[x]);
-            aField.setText(questions.get(x).getFirstChildElement("answer1").getValue());
-            bField.setText(questions.get(x).getFirstChildElement("answer2").getValue());
-            cField.setText(questions.get(x).getFirstChildElement("answer3").getValue());
-            dField.setText(questions.get(x).getFirstChildElement("answer4").getValue());
+            //Attaching strings to the string array.
+            for (int i = 0; i < questionNumbers.length; i++) {
+                do {
+                    random = (int) (Math.random() * 11);
+                } while (ArrayHelper.linearSearch(questionNumbers, random) != -1);
+                questionNumbers[i] = random;
+            }
+
+            questionArea.setText(questions.get(questionNumbers[x]).getFirstChildElement("question").getValue());
+            aField.setText(questions.get(questionNumbers[x]).getFirstChildElement("answer1").getValue());
+            bField.setText(questions.get(questionNumbers[x]).getFirstChildElement("answer2").getValue());
+            cField.setText(questions.get(questionNumbers[x]).getFirstChildElement("answer3").getValue());
+            dField.setText(questions.get(questionNumbers[x]).getFirstChildElement("answer4").getValue());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -363,6 +361,7 @@ public class Quiz extends javax.swing.JFrame {
 
     private void answerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerButtonActionPerformed
 
+        nextQuestionButton.setEnabled(true);
         if ((aRadioButton.isSelected()) && (questions.get(questionNumbers[x]).getFirstChildElement("correctAnswer").getValue().equals("answer1"))) {
             messageLabel.setText("Correct!");
             userScore = userScore + 1;
@@ -386,12 +385,6 @@ public class Quiz extends javax.swing.JFrame {
 
         correctAnswerField.setText(questions.get(x).getFirstChildElement("correctAnswer").getValue());
 
-        nextQuestionButton.setEnabled(true);
-
-        //Allows the user to see their end results.
-        if (x == 10) {
-            toResultsButton.setEnabled(true);
-        }
 
     }//GEN-LAST:event_answerButtonActionPerformed
 
@@ -399,23 +392,25 @@ public class Quiz extends javax.swing.JFrame {
 
         x = x + 1;
 
-        try {
+        //Allows the user to see their end results.
+        if (maxScore == 10) {
+            toResultsButton.setEnabled(true);
+            nextQuestionButton.setEnabled(false);
+            answerButton.setEnabled(false);
+        } else {
 
-            questionArea.setText(questions.get(x).getFirstChildElement("question").getValue());
-            aField.setText(questions.get(x).getFirstChildElement("answer1").getValue());
-            bField.setText(questions.get(x).getFirstChildElement("answer2").getValue());
-            cField.setText(questions.get(x).getFirstChildElement("answer3").getValue());
-            dField.setText(questions.get(x).getFirstChildElement("answer4").getValue());
-        } catch (Exception e) {
-            e.printStackTrace();
+            questionArea.setText(questions.get(questionNumbers[x]).getFirstChildElement("question").getValue());
+            aField.setText(questions.get(questionNumbers[x]).getFirstChildElement("answer1").getValue());
+            bField.setText(questions.get(questionNumbers[x]).getFirstChildElement("answer2").getValue());
+            cField.setText(questions.get(questionNumbers[x]).getFirstChildElement("answer3").getValue());
+            dField.setText(questions.get(questionNumbers[x]).getFirstChildElement("answer4").getValue());
+
+            questionNumberLabel.setText("" + (x + 1));
+
+            answerButton.setEnabled(true);
+
+            correctAnswerField.setText(" ");
         }
-
-        questionNumberLabel.setText("" + x);
-
-        answerButton.setEnabled(true);
-
-        correctAnswerField.setText(" ");
-
     }//GEN-LAST:event_nextQuestionButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
