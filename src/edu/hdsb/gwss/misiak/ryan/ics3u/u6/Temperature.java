@@ -40,7 +40,7 @@ public class Temperature {
             temperature[i] = inputTemperature.nextInt();
         }
 
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 7; i++) {
             System.out.println("Temperature for " + dayOfTheWeek[i] + temperature[i]);
         }
 
