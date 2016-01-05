@@ -18,14 +18,10 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Scanner inputAngleA = new Scanner(System.in);
-        double a = inputAngleA.nextInt();
-
-        Scanner inputAngleB = new Scanner(System.in);
-        double b = inputAngleB.nextInt();
-
-        Scanner inputAngleC = new Scanner(System.in);
-        double c = inputAngleC.nextInt();
+        Scanner input = new Scanner(System.in);
+        int a = Integer.parseInt(input.nextLine());
+        int b = Integer.parseInt(input.nextLine());
+        int c = Integer.parseInt(input.nextLine());
 
         boolean runCheck = true;
 
