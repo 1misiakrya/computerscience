@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
  *
  * @author 1misiakrya
  */
-public class CCC2014 {
+public class Main {
 
     /**
      * @param args the command line arguments
