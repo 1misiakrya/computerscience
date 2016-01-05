@@ -23,17 +23,19 @@ public class Main {
         int b = Integer.parseInt(input.nextLine());
         int c = Integer.parseInt(input.nextLine());
 
-        boolean runCheck = true;
+        boolean runCheck = false;
 
         double sum = a + b + c;
 
-        if (a < 0 || a > 180) {
-            runCheck = false;
-        } else if (b < 0 || b > 180) {
-            runCheck = false;
-        } else if (c < 0 || c > 180) {
-            runCheck = false;
-        } else if(sum != 180){
+        if (0 < a || a < 180) {
+            runCheck = true;
+        } else if (b > 0 || b < 180) {
+            runCheck = true;
+        } else if (c > 0 || c < 180) {
+            runCheck = true;
+        } 
+        
+        if(sum != 180){
             runCheck = false;
         }
 
