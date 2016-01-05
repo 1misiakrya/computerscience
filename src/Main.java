@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 
-
 import java.util.Scanner;
-import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
@@ -18,22 +16,16 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
 
-        Scanner input = new Scanner(new File("j1.1.in"));
-        int count = 0;
+        Scanner inputAngleA = new Scanner(System.in);
+        double a = inputAngleA.nextInt();
 
-        int[] Angle;
-        double a;
-        double b = 0;
-        double c = 0;
-        
-        while (input.hasNext()) {
-            System.out.println(input.nextLine());
-            count++;
-        }
+        Scanner inputAngleB = new Scanner(System.in);
+        double b = inputAngleB.nextInt();
 
-        a = (double) count;
+        Scanner inputAngleC = new Scanner(System.in);
+        double c = inputAngleC.nextInt();
 
         boolean runCheck = true;
 
@@ -45,22 +37,22 @@ public class Main {
             runCheck = false;
         } else if (c < 0 || c > 180) {
             runCheck = false;
+        } else if(sum != 180){
+            runCheck = false;
         }
 
-        if (runCheck) {
-            if (sum != 180) {
-                System.out.println("Error");
+        if (!runCheck) {
+            System.out.println("Error");
+        } else {
+            if (a == 60 && a == b && a == c) {
+                System.out.println("Equilateral");
+            } else if (a == b || b == c || a == c) {
+                System.out.println("Isoceles");
             } else {
-                if (a == 60 && (a == b) && (a == c)) {
-                    System.out.println("Equilateral");
-                } else if (a == b || b == c || a == c) {
-                    System.out.println("Isoceles");
-                } else {
-                    System.out.println("Scalene");
-                }
+                System.out.println("Scalene");
             }
-
         }
+
     }
 
 }
